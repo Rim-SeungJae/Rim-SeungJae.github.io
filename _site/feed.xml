@@ -1,0 +1,66 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://localhost:4000/</id>
+  <title>Rim-SeungJae blog</title>
+  <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
+  <updated>2023-12-28T14:29:59+09:00</updated>
+  <author>
+    <name>Rim,Seung-Jae</name>
+    <uri>http://localhost:4000/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="ko-KR"
+    href="http://localhost:4000/"/>
+  <generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator>
+  <rights> © 2023 Rim,Seung-Jae </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>블로그 시작</title>
+    <link href="http://localhost:4000/posts/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%8B%9C%EC%9E%91/" rel="alternate" type="text/html" title="블로그 시작" />
+    <published>2023-12-27T16:00:00+09:00</published>
+  
+    <updated>2023-12-27T16:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%8B%9C%EC%9E%91/</id>
+    <content src="http://localhost:4000/posts/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%8B%9C%EC%9E%91/" />
+    <author>
+      <name>Rim,Seung-Jae</name>
+    </author>
+
+  
+    
+    <category term="잡담" />
+    
+    <category term="블로그" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Rim-SeungJae의 개발 블로그
+
+오늘부터 이 블로그에 개발과 관련된 다양한 활동 기록을 남기려고 합니다.
+
+Problem solving 관련 공부한 내용, 전에 대학교에서 수강한 강의 관련, 그리고 진행하였던 몇가지 프로젝트 등 다양하게 생각중입니다.
+
+또 기회가 된다면 그동안 플레이했던 각종 게임에 대한 간단한 리뷰 게시글도 올릴 것 같습니다.
+
+    </summary>
+  
+
+  </entry>
+
+</feed>
+
+
