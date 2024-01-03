@@ -1,10 +1,44 @@
 [
   
   {
+    "title": "20149 선분 교차 3",
+    "url": "/posts/20149-%EC%84%A0%EB%B6%84-%EA%B5%90%EC%B0%A8-3/",
+    "categories": "ps스터디, 20149_선분_교차_3",
+    "tags": "Github, Git, 스터디, 알고리즘, 코딩테스트, CCW, 기하학",
+    "date": "2024-01-02 16:24:00 +0900",
+    
+
+
+
+
+
+    
+    "snippet": "20149 선분 교차 3 해법백준 온라인 저지 사이트에 올라와있는 문제이다.            :link:  문제 링크      풀이 할 때 일반적으로 떠오르는 해법인 평면에서 직선의 방정식을 이용해 각 직선의 기울기 등을 계산하는 방식은 부동소수점 오차로 인해 정확한 풀이가 불가능하다. 따라서 벡터의 외적을 활용하는 ccw 알고리즘을 써야 한다.이...",
+    "content": "20149 선분 교차 3 해법백준 온라인 저지 사이트에 올라와있는 문제이다.            :link:  문제 링크      풀이 할 때 일반적으로 떠오르는 해법인 평면에서 직선의 방정식을 이용해 각 직선의 기울기 등을 계산하는 방식은 부동소수점 오차로 인해 정확한 풀이가 불가능하다. 따라서 벡터의 외적을 활용하는 ccw 알고리즘을 써야 한다.이때 두 선분이 서로 일직선상에서 교차하는 경우에 대한 몇가지 예외처리까지 해주면 완전한 풀이가 가능하다.#include&lt;cstdio&gt;#include&lt;cmath&gt;  #include&lt;algorithm&gt;using namespace std;int ccw(long long x1,long long y1,long long x2,long long y2,long long x3,long long y3){\tlong long v_x1 = x2-x1,v_y1 = y2-y1,v_x2 = x3-x2,v_y2 = y3-y2;\tlong long ccw = v_x1*v_y2 - v_x2*v_y1;\tif(ccw&gt;0) return 1;\telse if(ccw==0) return 0;\telse return -1;}int main(){\tlong long x1,x2,x3,x4,y1,y2,y3,y4;\tscanf(\"%lld %lld %lld %lld\\n%lld %lld %lld %lld\",&amp;x1,&amp;y1,&amp;x2,&amp;y2,&amp;x3,&amp;y3,&amp;x4,&amp;y4);\tint ccw1,ccw2,ccw3,ccw4;\tccw1 = ccw(x1,y1,x2,y2,x3,y3);\tccw2 = ccw(x1,y1,x2,y2,x4,y4);\tccw3 = ccw(x3,y3,x4,y4,x1,y1);\tccw4 = ccw(x3,y3,x4,y4,x2,y2);\tbool result =false;\tif(ccw1 * ccw2 == 0 &amp;&amp; ccw3 * ccw4 == 0)\t{\t\t\tif(x1&gt;x2)\t\t\t{\t\t\t\tswap(x1,x2);\t\t\t\tswap(y1,y2);\t\t\t}\t\t\telse if(x1==x2 &amp;&amp; y1&gt;y2)\t\t\t{\t\t\t\tswap(x1,x2);\t\t\t\tswap(y1,y2);\t\t\t}\t\t\tif(x3&gt;x4)\t\t\t{\t\t\t\tswap(x3,x4);\t\t\t\tswap(y3,y4);\t\t\t}\t\t\telse if(x3==x4 &amp;&amp; y3&gt;y4)\t\t\t{\t\t\t\tswap(x3,x4);\t\t\t\tswap(y3,y4);\t\t\t}\t\t\tif((x2&gt;x3?true:(x2==x3?y2&gt;=y3:false))&amp;&amp;(x1&lt;x4?true:(x1==x4?y1&lt;=y4:false)))\t\t\t{\t\t\t\tprintf(\"1\\n\");\t\t\t\tif(ccw1!=ccw2 &amp;&amp; ccw3!=ccw4)\t\t\t\t{\t\t\t\t\tif(x2==x3 &amp;&amp; y2==y3 || x2==x4 &amp;&amp; y2==y4) printf(\"%lld %lld\",x2,y2);\t\t\t\t\telse printf(\"%lld %lld\",x1,y1);\t\t\t\t}\t\t\t\telse{\t\t\t\t\tif(x2==x3 &amp;&amp; y2==y3) printf(\"%lld %lld\",x2,y2);\t\t\t\t\telse if(x1==x4 &amp;&amp; y1==y4) printf(\"%lld %lld\",x1,y1);\t\t\t\t}\t\t\t\treturn 0;\t\t\t}\t}\telse if(ccw1 * ccw2 &lt;= 0 &amp;&amp; ccw3 * ccw4 &lt;= 0)\t{\t\tprintf(\"1\\n\");\t\tlong double grad1,grad2,c1,c2;\t\tbool is_ver1=false,is_ver2=false;\t\tif(x1-x2==0) is_ver1 =true;\t\telse\t\t{\t\t\tgrad1 = (long double)(y1-y2) / (x1-x2);\t\t}\t\tif(x3-x4==0) is_ver2=true;\t\telse\t\t{\t\t\tgrad2 = (long double)(y3-y4)/(x3-x4);\t\t}\t\tif(is_ver1)\t\t{\t\t\tc2 = y3 - grad2 * x3;\t\t\tlong double y_meet;\t\t\ty_meet = grad2 * x1 + c2;\t\t\tprintf(\"%.16Lf %.16Lf\",(long double)x1,y_meet);\t\t}\t\telse if(is_ver2)\t\t{\t\t\tc1 = y1 - grad1 * x1;\t\t\tlong double y_meet;\t\t\ty_meet = grad1 * x3 + c1;\t\t\tprintf(\"%.16Lf %.16Lf\",(long double)x3,y_meet);\t\t}\t\telse\t\t{\t\t\tc1 = y1 - grad1 * x1;\t\t\tc2 = y3 - grad2 * x3;\t\t\tlong double x_meet,y_meet;\t\t\tx_meet = (c2 - c1) / (grad1 - grad2);\t\t\ty_meet = x_meet * grad1 + c1;\t\t\tprintf(\"%.16Lf %.16Lf\",x_meet,y_meet);\t\t}\t\treturn 0;\t}\tprintf(\"0\");}"
+  },
+  
+  {
+    "title": "problem solving 스터디 시작",
+    "url": "/posts/problem-solving-%EC%8A%A4%ED%84%B0%EB%94%94-%EC%8B%9C%EC%9E%91/",
+    "categories": "ps스터디, 스터디 시작",
+    "tags": "Github, Git, 스터디, 알고리즘, 코딩테스트",
+    "date": "2024-01-02 15:26:00 +0900",
+    
+
+
+
+
+
+    
+    "snippet": "problem solving 스터디 시작각종 코딩 테스트 준비 및 개인 코딩 실력 향상을 위해서 대학교 동기인 Hyuk-San Kwon, slllldka과 함께 스터디 그룹을 만들었습니다. 제가 풀어서 공유하였던 문제나 다른 그룹원이 공유하였던 문제 중에 인상깊은 문제가 있다면 해법을 간단하게 정리하여 ps스터디 카테고리로 포스팅하겠습니다.      ...",
+    "content": "problem solving 스터디 시작각종 코딩 테스트 준비 및 개인 코딩 실력 향상을 위해서 대학교 동기인 Hyuk-San Kwon, slllldka과 함께 스터디 그룹을 만들었습니다. 제가 풀어서 공유하였던 문제나 다른 그룹원이 공유하였던 문제 중에 인상깊은 문제가 있다면 해법을 간단하게 정리하여 ps스터디 카테고리로 포스팅하겠습니다.            :link:  스터디 깃허브 저장소 바로가기      "
+  },
+  
+  {
     "title": "블로그 시작",
     "url": "/posts/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%8B%9C%EC%9E%91/",
-    "categories": "잡담, 블로그",
-    "tags": "",
+    "categories": "블로그, 블로그 시작",
+    "tags": "블로그, 개발, 기록",
     "date": "2023-12-27 16:00:00 +0900",
     
 

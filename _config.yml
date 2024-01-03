@@ -194,3 +194,11 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+plugins:
+  - jemoji
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
