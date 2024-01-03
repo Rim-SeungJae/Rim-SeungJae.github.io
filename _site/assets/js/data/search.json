@@ -1,6 +1,57 @@
 [
   
   {
+    "title": "2357 최댓값과 최솟값",
+    "url": "/posts/2357-%EC%B5%9C%EB%8C%93%EA%B0%92%EA%B3%BC-%EC%B5%9C%EC%86%9F%EA%B0%92/",
+    "categories": "ps스터디, 2357 최댓값과 최솟값",
+    "tags": "Github, Git, 스터디, 알고리즘, 코딩테스트, 세그먼트 트리",
+    "date": "2024-01-03 15:28:00 +0900",
+    
+
+
+
+
+
+    
+    "snippet": "1019 책 페이지 해법            :link:  문제 링크      세그먼트 트리라는 자료구조의 구현 및 활용 방법만 알고 있다면 간단하게 해결할 수 있는 문제이다.#include&lt;cstdio&gt;#include&lt;vector&gt;using namespace std;pair&lt;int,int&gt; seg[2000020];in...",
+    "content": "1019 책 페이지 해법            :link:  문제 링크      세그먼트 트리라는 자료구조의 구현 및 활용 방법만 알고 있다면 간단하게 해결할 수 있는 문제이다.#include&lt;cstdio&gt;#include&lt;vector&gt;using namespace std;pair&lt;int,int&gt; seg[2000020];int arr[1000010];void create_seg(int idx,int l,int r){\tif(l==r)\t{\t\tseg[idx] = make_pair(arr[l],arr[l]);\t\treturn;\t}\tint mid = (l+r)/2;\tcreate_seg(2*idx,l,mid);\tcreate_seg(2*idx+1,mid+1,r);\tint min,max;\tif(seg[2*idx].first&lt;seg[2*idx+1].first) min = seg[2*idx].first;\telse min = seg[2*idx+1].first;\tif(seg[2*idx].second&gt;seg[2*idx+1].second) max = seg[2*idx].second;\telse max = seg[2*idx+1].second;\tseg[idx] = make_pair(min,max);}pair&lt;int,int&gt; get_minmax(int idx,int l,int r,int begin,int end){\tif(r&lt;begin || l&gt;end) return make_pair(1000000001,0);\tif(l&gt;=begin &amp;&amp; r&lt;=end) return seg[idx];\telse{\t\tint mid = (l+r)/2;\t\tpair&lt;int,int&gt; tmp1,tmp2;\t\ttmp1 = get_minmax(idx*2,l,mid,begin,end);\t\ttmp2 = get_minmax(idx*2+1,mid+1,r,begin,end);\t\tint min,max;\t\tif(tmp1.first&lt;tmp2.first) min = tmp1.first;\t\telse min = tmp2.first;\t\tif(tmp1.second&gt;tmp2.second) max = tmp1.second;\t\telse max = tmp2.second;\t\treturn make_pair(min,max);\t}}int main(){\tint n,m;\tscanf(\"%d %d\",&amp;n,&amp;m);\tfor(int i=0;i&lt;n;i++)\t{\t\tscanf(\"%d\",&amp;arr[i]);\t}\tcreate_seg(1,0,n-1);\t/*\tfor(int i=0;i&lt;2*n;i++)\t{\t\tprintf(\"%d,%d \",seg[i].first,seg[i].second);\t}\t*/\tfor(int i=0;i&lt;m;i++)\t{\t\tint a,b;\t\tscanf(\"%d %d\",&amp;a,&amp;b);\t\tpair&lt;int,int&gt; result;\t\tresult = get_minmax(1,0,n-1,a-1,b-1);\t\tprintf(\"%d %d\\n\",result.first,result.second);\t}}"
+  },
+  
+  {
+    "title": "1019 책 페이지",
+    "url": "/posts/1019-%EC%B1%85-%ED%8E%98%EC%9D%B4%EC%A7%80/",
+    "categories": "ps스터디, 1019 책 페이지",
+    "tags": "Github, Git, 스터디, 알고리즘, 코딩테스트, 수학",
+    "date": "2024-01-03 14:43:00 +0900",
+    
+
+
+
+
+
+    
+    "snippet": "1019 책 페이지 해법백준 온라인 저지 사이트에 올라와있는 문제이다.            :link:  문제 링크      특수한 알고리즘이 필요한 문제는 아니고 수학적인 통찰력으로 해결할 수 있는 문제이다. 입력받은 수의 각 자릿수들을 a1a2…ai…an-1an라고 할때 i번째 자리에 특정 숫자가 몇번씩 등장하는지 고민해보면 문제를 해결할 수 있다...",
+    "content": "1019 책 페이지 해법백준 온라인 저지 사이트에 올라와있는 문제이다.            :link:  문제 링크      특수한 알고리즘이 필요한 문제는 아니고 수학적인 통찰력으로 해결할 수 있는 문제이다. 입력받은 수의 각 자릿수들을 a1a2…ai…an-1an라고 할때 i번째 자리에 특정 숫자가 몇번씩 등장하는지 고민해보면 문제를 해결할 수 있다.숫자 target이 i번째 자리에 몇번 등장하는지 구하는 방법은 아래와 같다.1) ai == target 인 경우  a1a2…ai-1 * 10n-i + ai+1ai+2…an + 12) ai &gt; target 인 경우  a1a2…ai-1 * 10n-i3) ai &lt; target 인 경우  (a1a2…ai-1 + 1) * 10n-i이때 target == 0 인 경우에는 위와는 조금 다르게 구해야 한다. 자세한 내용은 코드 참고.#include&lt;cstdio&gt;using namespace std;int main(){\tlong long n,arr[10]={0,};\tscanf(\"%lld\",&amp;n);\tfor(int i=0;i&lt;10;i++)\t{\t\tlong long bias = 1;\t\twhile(bias&lt;=n)\t\t{\t\t\tlong long l = n/bias/10;\t\t\tlong long target = (n/bias)%10;\t\t\tlong long r = n%bias;\t\t\tif(i==0)\t\t\t{\t\t\t\tif(target == i &amp;&amp; bias != 1)\t\t\t\t{\t\t\t\t\tarr[i] += (l-1) * bias + r + 1;\t\t\t\t}\t\t\t\telse{\t\t\t\t\tarr[i] += l*bias;\t\t\t\t}\t\t\t}\t\t\telse{\t\t\t\tif(target == i)\t\t\t\t{\t\t\t\t\tarr[i] += l * bias + r + 1;\t\t\t\t}\t\t\t\telse if(target &lt; i)\t\t\t\t{\t\t\t\t\tarr[i] += l * bias;\t\t\t\t}\t\t\t\telse{\t\t\t\t\tarr[i] += (l+1) * bias;\t\t\t\t}\t\t\t}\t\t\tbias *= 10; \t\t\t//printf(\"%d\\n\",arr[i]);\t\t}\t\tprintf(\"%lld \",arr[i]);\t}}"
+  },
+  
+  {
+    "title": "2079 팰린드롬",
+    "url": "/posts/2079-%ED%8C%B0%EB%A6%B0%EB%93%9C%EB%A1%AC/",
+    "categories": "ps스터디, 2079 팰린드롬",
+    "tags": "Github, Git, 스터디, 알고리즘, 코딩테스트, 다이나믹 프로그래밍",
+    "date": "2024-01-03 14:18:00 +0900",
+    
+
+
+
+
+
+    
+    "snippet": "2079 팰린드롬 해법백준 온라인 저지 사이트에 올라와있는 문제이다.            :link:  문제 링크      문자열 string이 주어졌을때 해당 문자열의 i번째 인덱스부터 j번째 인덱스까지의 부분문자열이 팰린드롬인지 아닌지를 P(i,j)라고 했을 때 아래의 공식이 성립한다1) string[i] == string[j]인 경우P(i,j) ...",
+    "content": "2079 팰린드롬 해법백준 온라인 저지 사이트에 올라와있는 문제이다.            :link:  문제 링크      문자열 string이 주어졌을때 해당 문자열의 i번째 인덱스부터 j번째 인덱스까지의 부분문자열이 팰린드롬인지 아닌지를 P(i,j)라고 했을 때 아래의 공식이 성립한다1) string[i] == string[j]인 경우P(i,j) = P(i+1,j-1)2) string[i] != string[j]인 경우P(i,j) = false이를 활용한 동적계획법으로 모든 범위내의 i,j에 대한 P(i,j)를 구할 수 있다. 최소 개수의 팰린드롬으로 나누는 방법은 bfs를 통해서 구하면 된다.#include&lt;vector&gt;#include&lt;queue&gt;using namespace std;int main(){\tchar tmp[2020];\tbool dp[2020][2020] = {0,};\tscanf(\"%s\",tmp);\tstring s=string(tmp);\tvector&lt;vector&lt;int&gt;&gt; g=vector&lt;vector&lt;int&gt;&gt;(s.length()+1,vector&lt;int&gt;());\t//printf(\"%s\",s.c_str());\tfor(int i=0;i&lt;s.length();i++)\t{\t\tdp[i][i] = true;\t\tg[i].push_back(i+1);\t\tfor(int j=1;i-j&gt;=0 &amp;&amp; i+j&lt;s.length();j++)\t\t{\t\t\tif(s[i-j] == s[i+j])\t\t\t{\t\t\t\tdp[i-j][i+j] = true;\t\t\t\tg[i-j].push_back(i+j+1);\t\t\t}\t\t\telse break;\t\t}\t\tif(i+1&lt;s.length() &amp;&amp; s[i]==s[i+1])\t\t{\t\t\tdp[i][i+1] = true;\t\t\tg[i].push_back(i+2);\t\t\tfor(int j=1;i-j&gt;=0 &amp;&amp; i+1+j&lt;s.length();j++)\t\t\t{\t\t\t\tif(s[i-j] == s[i+1+j])\t\t\t\t{\t\t\t\t\tdp[i-j][i+1+j] = true;\t\t\t\t\tg[i-j].push_back(i+j+2);\t\t\t\t}\t\t\t\telse break;\t\t\t}\t\t}\t}\t/*\tfor(int i=0;i&lt;s.length();i++)\t{\t\tfor(int j=0;j&lt;s.length();j++)\t\t{\t\t\tprintf(\"%d \",dp[i][j]);\t\t}\t\tprintf(\"\\n\");\t}\t\tfor(int i=0;i&lt;s.length();i++)\t{\t\tfor(int j=0;j&lt;g[i].size();j++)\t\t{\t\t\tprintf(\"%d \",g[i][j]);\t\t}\t\tprintf(\"\\n\");\t}\t*/\tqueue&lt;int&gt; q;\tbool visited[2020] = {0,};\tint dist[2020] = {0,};\tvisited[0] = true;\tq.push(0);\twhile(!q.empty())\t{\t\tint cur = q.front();\t\tq.pop();\t\tfor(int i=0;i&lt;g[cur].size();i++)\t\t{\t\t\tif(!visited[g[cur][i]])\t\t\t{\t\t\t\tvisited[g[cur][i]] = true;\t\t\t\tdist[g[cur][i]] = dist[cur]+1;\t\t\t\tq.push(g[cur][i]);\t\t\t}\t\t}\t}\tprintf(\"%d\",dist[s.size()]);}"
+  },
+  
+  {
     "title": "20149 선분 교차 3",
     "url": "/posts/20149-%EC%84%A0%EB%B6%84-%EA%B5%90%EC%B0%A8-3/",
     "categories": "ps스터디, 20149_선분_교차_3",

@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>RimSJ blog</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2024-01-03T13:27:42+09:00</updated>
+  <updated>2024-01-03T15:34:05+09:00</updated>
   <author>
     <name>Rim,Seung-Jae</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,195 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>2357 최댓값과 최솟값</title>
+    <link href="http://localhost:4000/posts/2357-%EC%B5%9C%EB%8C%93%EA%B0%92%EA%B3%BC-%EC%B5%9C%EC%86%9F%EA%B0%92/" rel="alternate" type="text/html" title="2357 최댓값과 최솟값" />
+    <published>2024-01-03T15:28:00+09:00</published>
+  
+    <updated>2024-01-03T15:28:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/2357-%EC%B5%9C%EB%8C%93%EA%B0%92%EA%B3%BC-%EC%B5%9C%EC%86%9F%EA%B0%92/</id>
+    <content src="http://localhost:4000/posts/2357-%EC%B5%9C%EB%8C%93%EA%B0%92%EA%B3%BC-%EC%B5%9C%EC%86%9F%EA%B0%92/" />
+    <author>
+      <name>Rim,Seung-Jae</name>
+    </author>
+
+  
+    
+    <category term="ps스터디" />
+    
+    <category term="2357 최댓값과 최솟값" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      1019 책 페이지 해법
+
+
+
+  
+    
+      :link:  문제 링크
+    
+  
+
+
+세그먼트 트리라는 자료구조의 구현 및 활용 방법만 알고 있다면 간단하게 해결할 수 있는 문제이다.
+
+#include&amp;lt;cstdio&amp;gt;
+#include&amp;lt;vector&amp;gt;
+
+using namespace std;
+
+pair&amp;lt;int,int&amp;gt; seg[2000020];
+int arr[1000010];
+
+void create_seg(int idx,int l,int r)
+{
+	if(l==r)
+	{
+		seg[idx] = make_pair(arr[l],arr[l]);
+		return;
+	}
+	int mid = (l+r)/2;
+	create_seg(2*idx,l,mid);
+	create_seg(2*...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>1019 책 페이지</title>
+    <link href="http://localhost:4000/posts/1019-%EC%B1%85-%ED%8E%98%EC%9D%B4%EC%A7%80/" rel="alternate" type="text/html" title="1019 책 페이지" />
+    <published>2024-01-03T14:43:00+09:00</published>
+  
+    <updated>2024-01-03T14:43:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/1019-%EC%B1%85-%ED%8E%98%EC%9D%B4%EC%A7%80/</id>
+    <content src="http://localhost:4000/posts/1019-%EC%B1%85-%ED%8E%98%EC%9D%B4%EC%A7%80/" />
+    <author>
+      <name>Rim,Seung-Jae</name>
+    </author>
+
+  
+    
+    <category term="ps스터디" />
+    
+    <category term="1019 책 페이지" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      1019 책 페이지 해법
+
+백준 온라인 저지 사이트에 올라와있는 문제이다.
+
+
+  
+    
+      :link:  문제 링크
+    
+  
+
+
+특수한 알고리즘이 필요한 문제는 아니고 수학적인 통찰력으로 해결할 수 있는 문제이다. 입력받은 수의 각 자릿수들을 a1a2…ai…an-1an라고 할때 i번째 자리에 특정 숫자가 몇번씩 등장하는지 고민해보면 문제를 해결할 수 있다.
+
+숫자 target이 i번째 자리에 몇번 등장하는지 구하는 방법은 아래와 같다.
+
+1) ai == target 인 경우
+
+  a1a2…ai-1 * 10n-i + ai+1ai+2…an + 1
+
+
+2) ai &amp;gt; target 인 경우
+
+  a1a2…ai-1 * 10n-i
+
+
+3) ai &amp;lt; target 인 경우
+
+  (a1a2…...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>2079 팰린드롬</title>
+    <link href="http://localhost:4000/posts/2079-%ED%8C%B0%EB%A6%B0%EB%93%9C%EB%A1%AC/" rel="alternate" type="text/html" title="2079 팰린드롬" />
+    <published>2024-01-03T14:18:00+09:00</published>
+  
+    <updated>2024-01-03T14:18:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/2079-%ED%8C%B0%EB%A6%B0%EB%93%9C%EB%A1%AC/</id>
+    <content src="http://localhost:4000/posts/2079-%ED%8C%B0%EB%A6%B0%EB%93%9C%EB%A1%AC/" />
+    <author>
+      <name>Rim,Seung-Jae</name>
+    </author>
+
+  
+    
+    <category term="ps스터디" />
+    
+    <category term="2079 팰린드롬" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      2079 팰린드롬 해법
+
+백준 온라인 저지 사이트에 올라와있는 문제이다.
+
+
+  
+    
+      :link:  문제 링크
+    
+  
+
+
+문자열 string이 주어졌을때 해당 문자열의 i번째 인덱스부터 j번째 인덱스까지의 부분문자열이 팰린드롬인지 아닌지를 P(i,j)라고 했을 때 아래의 공식이 성립한다
+
+1) string[i] == string[j]인 경우
+P(i,j) = P(i+1,j-1)
+
+2) string[i] != string[j]인 경우
+P(i,j) = false
+
+이를 활용한 동적계획법으로 모든 범위내의 i,j에 대한 P(i,j)를 구할 수 있다. 최소 개수의 팰린드롬으로 나누는 방법은 bfs를 통해서 구하면 된다.
+
+#include&amp;lt;vector&amp;gt;
+#include&amp;lt;qu...
+    </summary>
+  
+
+  </entry>
 
   
   <entry>
@@ -82,7 +271,7 @@ int ccw(long long x1,long long...
     <link href="http://localhost:4000/posts/problem-solving-%EC%8A%A4%ED%84%B0%EB%94%94-%EC%8B%9C%EC%9E%91/" rel="alternate" type="text/html" title="problem solving 스터디 시작" />
     <published>2024-01-02T15:26:00+09:00</published>
   
-    <updated>2024-01-02T15:26:00+09:00</updated>
+    <updated>2024-01-03T13:28:44+09:00</updated>
   
     <id>http://localhost:4000/posts/problem-solving-%EC%8A%A4%ED%84%B0%EB%94%94-%EC%8B%9C%EC%9E%91/</id>
     <content src="http://localhost:4000/posts/problem-solving-%EC%8A%A4%ED%84%B0%EB%94%94-%EC%8B%9C%EC%9E%91/" />
@@ -119,50 +308,6 @@ int ccw(long long x1,long long...
   
 
 
-
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>블로그 시작</title>
-    <link href="http://localhost:4000/posts/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%8B%9C%EC%9E%91/" rel="alternate" type="text/html" title="블로그 시작" />
-    <published>2023-12-27T16:00:00+09:00</published>
-  
-    <updated>2024-01-02T16:00:01+09:00</updated>
-  
-    <id>http://localhost:4000/posts/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%8B%9C%EC%9E%91/</id>
-    <content src="http://localhost:4000/posts/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%8B%9C%EC%9E%91/" />
-    <author>
-      <name>Rim,Seung-Jae</name>
-    </author>
-
-  
-    
-    <category term="블로그" />
-    
-    <category term="블로그 시작" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      Rim-SeungJae의 개발 블로그
-
-
-오늘부터 이 블로그에 개발과 관련된 다양한 활동 기록을 남기려고 합니다.
-
-Problem solving 관련 공부한 내용, 전에 대학교에서 수강한 강의 관련, 그리고 진행하였던 몇가지 프로젝트 등 다양하게 생각중입니다.
-
-또 기회가 된다면 그동안 플레이했던 각종 게임에 대한 간단한 리뷰 게시글도 올릴 것 같습니다.
 
     </summary>
   
