@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>RimSJ blog</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2024-01-03T15:34:05+09:00</updated>
+  <updated>2024-01-04T14:29:33+09:00</updated>
   <author>
     <name>Rim,Seung-Jae</name>
     <uri>http://localhost:4000/</uri>
@@ -36,7 +36,7 @@
     
     <category term="ps스터디" />
     
-    <category term="2357 최댓값과 최솟값" />
+    <category term="boj" />
     
   
 
@@ -102,7 +102,7 @@ void create_seg(int idx,int l,int r)
     
     <category term="ps스터디" />
     
-    <category term="1019 책 페이지" />
+    <category term="boj" />
     
   
 
@@ -166,7 +166,7 @@ void create_seg(int idx,int l,int r)
     
     <category term="ps스터디" />
     
-    <category term="2079 팰린드롬" />
+    <category term="boj" />
     
   
 
@@ -225,7 +225,7 @@ P(i,j) = false
     
     <category term="ps스터디" />
     
-    <category term="20149_선분_교차_3" />
+    <category term="boj" />
     
   
 
