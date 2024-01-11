@@ -1,6 +1,57 @@
 [
   
   {
+    "title": "해양 침적 쓰레기 이미지를 활용한 인공지능 프로젝트",
+    "url": "/posts/%ED%95%B4%EC%96%91-%EC%B9%A8%EC%A0%81-%EC%93%B0%EB%A0%88%EA%B8%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/",
+    "categories": "프로젝트, 인공지능",
+    "tags": "프로젝트, 인공지능, AI, 이미지분류",
+    "date": "2024-01-11 16:00:00 +0900",
+    
+
+
+
+
+
+    
+    "snippet": "개요본 프로젝트에는 AI-Hub의 해양 침적 쓰레기 이미지 데이터셋이 사용되었다. 해당 데이터셋은 해양 침적 쓰레기의 수거를 위해 실시, 설계 조사를 보다 빠르고 효율적으로 수행하고자 조사 과정에서 생성되는 소나 조사 이미지와 수중 촬영 이미지를 통해 침적 쓰레기를 자동 인식하고 분류할 수 있도록 인공지능을 훈련하기 위한 데이터셋이다.우리는 해당 데이...",
+    "content": "개요본 프로젝트에는 AI-Hub의 해양 침적 쓰레기 이미지 데이터셋이 사용되었다. 해당 데이터셋은 해양 침적 쓰레기의 수거를 위해 실시, 설계 조사를 보다 빠르고 효율적으로 수행하고자 조사 과정에서 생성되는 소나 조사 이미지와 수중 촬영 이미지를 통해 침적 쓰레기를 자동 인식하고 분류할 수 있도록 인공지능을 훈련하기 위한 데이터셋이다.우리는 해당 데이터셋의 선행 프로젝트에서 인공지능 모델로 YOLO를 선택했음에 주목했다. YOLO는 특정 이미지에서 여러가지 대상들이 각각 어떤 사물인지, 그리고 이미지 내에서 어느 위치에 있는지 탐지해내는 multi-label object detection 측면에서 강력하기로 유명한 모델이다.그러나 해당 데이터셋의 이미지들을 분석해보면 한 이미지 내에 여러가지 쓰레기들이 혼재하는 경우는 매우 드물다는 점을 알 수 있다. 그러므로 YOLO 정도로 complex한 모델이 오히려 불필요할 수도 있다는 가능성을 도출하였다. 따라서 이번 프로젝트에서는 YOLO보다 가벼운 cnn 관련 모델들을 여러개 구현하여 각각의 성능을 비교해보고자 한다.                              해양 쓰레기 ‘밧줄’이 포함된 데이터 샘플      사용한 모델들본 프로젝트에서 해양 침적 쓰레기 이미지 분류를 위해 구현된 모델은 총 4가지이다.1) VGGNetVGGNet은 심층 신경망의 시작점이라고도 많이 불리는 모델이다. VGGNet이 등장하기 이전, ImageNet Large Scale Visual Recognition Challenge에서 우수한 성적을 거두었던 모델들은 최대 8개 층을 이용했다.다른 수많은 모델들이 VGGNet의 영향을 받았다는 점을 고려하면 본 프로젝트에서 VGGNet을 기용하는 것은 충분히 의미가 있다.                              VGGNet의 구조      2) ResNetResNet은 “Deep Residual Learning for Image”에서 처음 소개된 모델이다. ResNet의 가장 큰 특징은 3x3 크기의 컨볼루션 레이어만 사용하여 이미지의 특성을 추출한다는 점이다. 우리 프로젝트에서는 ResNet의 가장 기본적인 형태인 ResNet-18을 사용한다.                              ResNet-18의 구조      3) DenseNetDenseNet은 2017년에 등장했다. DenseNet은 ResNet을 이기기 위해 개발된 것으로 둘 간에는 몇 가지 차이가 존재한다. ‘Densely Connected Convolutional Networks’ 논문에 따르면 DenseNet은 기울기 소실 문제를 해결하고 강한 기울기 흐름과 정보 흐름을 가진 특성 재사용 능력이 있다고 한다.                              DenseNet의 구조      4) DarkNetDarkNet은 YOLO 버전 2와 3의 백본 모델이다. 그 구조는 GoogleNet과 매우 유사하지만 1x1 컨볼루션 레이어를 사용한다. ImageNet에서의 결과를 참고하면 DarkNet은 레이어 수에 비해 매우 높은 정확도를 기록한다.DarkNet을 프로젝트에 사용하는 또 다른 이유는 이것이 YOLO 모델들의 백본이기 때문이다. 앞서 언급한거처럼 YOLO 전체를 해양 침적 쓰레기 데이터셋에 적용하는것은 비효율적인 것처럼 보이지만 YOLO의 백본인 DarkNet만을 활용한다면 더 좋은 결과를 얻을지도 모른다.                              DarkNet-19의 구조      결과            모델      정확도                  ResNet      55%              DarkNet      21%              VGGNet      50%              DenseNet      43%      DenseNet은 모델 복잡성이 높은 편인데도 VGGNet 및 ResNet보다 정확도가 낮다. 특히, 모델 복잡성이 가장 높은 DarkNet은 정확도가 21%로 급격하게 감소한다. 이는 과제에 대한 우리의 해석이 어느 정도 옳았음을 증명한다. 처음에 우리는 YOLO와 같은 고수준의 object detection 모델이 필요하지 않을 것으로 생각했다. 따라서 우리는 이 과제를 4개의 모델을 사용한 multi-label 분류 문제로 접근했다. 결론적으로 DenseNet과 DarkNet의 complexity가 이 작업을 수행하기에 너무 높아서 훈련 데이터에서 과적합이 발생하면서 정확도가 낮아졌다고 볼 수 있는 것이다.그러나 아쉬운점은 우리 모델 중 가장 높은 정확도는 55%에 불과하다는 점이다. 개발 환경에서의 컴퓨팅 파워 제한으로 인한 불가피한 이미지 크기의 조정, 그리고 학습 데이터셋 크기가 크지 않다는 사실이 영향을 미쳤을 것이라고 추측한다.프로젝트 링크| :link:  프로젝트 깃허브 링크  |프로젝트 참여자| :link:  Rim-SeungJae  || :link:  DongwonKim  |"
+  },
+  
+  {
+    "title": "14725 개미굴",
+    "url": "/posts/14725-%EA%B0%9C%EB%AF%B8%EA%B5%B4/",
+    "categories": "ps스터디, boj",
+    "tags": "Github, Git, 스터디, 알고리즘, 코딩테스트, 트라이",
+    "date": "2024-01-11 15:25:00 +0900",
+    
+
+
+
+
+
+    
+    "snippet": "14725 개미굴 해법            :link:  문제 링크      트라이라고 하는 독특한 트리 형태의 자료구조를 활용하는 문제. 단, 맛보기 정도의 난이도이기에 map을 활용하여 트리를 구현한다는 정도만 이해한다면 쉽게 풀 수 있다.#include&lt;map&gt;#include&lt;set&gt;#include&lt;vector&gt;#...",
+    "content": "14725 개미굴 해법            :link:  문제 링크      트라이라고 하는 독특한 트리 형태의 자료구조를 활용하는 문제. 단, 맛보기 정도의 난이도이기에 map을 활용하여 트리를 구현한다는 정도만 이해한다면 쉽게 풀 수 있다.#include&lt;map&gt;#include&lt;set&gt;#include&lt;vector&gt;#include&lt;string&gt;#include&lt;iostream&gt;#include&lt;queue&gt;using namespace std;class node{    public:        map&lt;string,node*&gt; children;        void insert(vector&lt;string&gt; v,int idx)        {            if(idx == v.size()) return;            if(children.find(v[idx])==children.end())            {                children[v[idx]] = new node;            }            children[v[idx]] -&gt; insert(v,idx+1);        }        void dfs(int depth)        {            for(auto iter=children.begin();iter!=children.end();iter++)            {                for(int i=0;i&lt;depth;i++) cout &lt;&lt; \"--\";                cout &lt;&lt; (*iter).first &lt;&lt; '\\n';                (iter-&gt;second)-&gt;dfs(depth+1);            }        }};int main(){    ios::sync_with_stdio(false);    cin.tie(NULL);    node trie;    int n;    cin &gt;&gt; n;    for(int i=0;i&lt;n;i++)    {        int k;        cin &gt;&gt; k;        vector&lt;string&gt; v;        for(int j=0;j&lt;k;j++)        {            string str;            cin &gt;&gt; str;            v.push_back(str);        }        trie.insert(v,0);    }    trie.dfs(0);}"
+  },
+  
+  {
+    "title": "2042 구간 합 구하기",
+    "url": "/posts/2042-%EA%B5%AC%EA%B0%84-%ED%95%A9-%EA%B5%AC%ED%95%98%EA%B8%B0/",
+    "categories": "ps스터디, boj",
+    "tags": "Github, Git, 스터디, 알고리즘, 코딩테스트, 세그먼트 트리",
+    "date": "2024-01-10 14:05:00 +0900",
+    
+
+
+
+
+
+    
+    "snippet": "2042 구간 합 구하기 해법            :link:  문제 링크      세그먼트 트리를 이용하는 문제. 이전에 다루었던 1019 책 페이지 문제보다 조금 더 심화되어 세그먼트 트리의 모든 기능을 다룰 줄 알아야 해결할 수 있는 문제이다.#include&lt;cstdio&gt;using namespace std;long long seg[40...",
+    "content": "2042 구간 합 구하기 해법            :link:  문제 링크      세그먼트 트리를 이용하는 문제. 이전에 다루었던 1019 책 페이지 문제보다 조금 더 심화되어 세그먼트 트리의 모든 기능을 다룰 줄 알아야 해결할 수 있는 문제이다.#include&lt;cstdio&gt;using namespace std;long long seg[4000010];long long tmp[1000010];long long init(int start,int end,int idx){    if(start == end)    {        seg[idx] = tmp[start];        return seg[idx];    }    int mid = (start+end)/2;    return seg[idx] = init(start,mid,idx*2) + init(mid+1,end,idx*2+1);}void change(int start,int end,int idx,int target,long long diff){    if(start&gt;target || end&lt;target) return;    seg[idx] += diff;    if(start==end) return;    int mid = (start+end)/2;    change(start,mid,idx*2,target,diff);    change(mid+1,end,idx*2+1,target,diff);}long long sum(int start,int end,int idx,int l,int r){    if(start&gt;r || end&lt;l) return 0;    if(l&lt;=start &amp;&amp; end&lt;=r) return seg[idx];    else{        int mid = (start+end)/2;        return sum(start,mid,idx*2,l,r) + sum(mid+1,end,idx*2+1,l,r);    }}int main(){    int n,m,k;    scanf(\"%d %d %d\",&amp;n,&amp;m,&amp;k);    for(int i=0;i&lt;n;i++)    {        scanf(\"%lld\",&amp;tmp[i]);    }    init(0,n-1,1);    for(int i=0;i&lt;m+k;i++)    {        long long a,b,c;        scanf(\"%lld %lld %lld\",&amp;a,&amp;b,&amp;c);        if(a==1)        {            change(0,n-1,1,b-1,c-tmp[b-1]);            tmp[b-1] = c;        }        else{            printf(\"%lld\\n\",sum(0,n-1,1,b-1,c-1));        }    }}"
+  },
+  
+  {
     "title": "2357 최댓값과 최솟값",
     "url": "/posts/2357-%EC%B5%9C%EB%8C%93%EA%B0%92%EA%B3%BC-%EC%B5%9C%EC%86%9F%EA%B0%92/",
     "categories": "ps스터디, boj",
@@ -13,8 +64,8 @@
 
 
     
-    "snippet": "1019 책 페이지 해법            :link:  문제 링크      세그먼트 트리라는 자료구조의 구현 및 활용 방법만 알고 있다면 간단하게 해결할 수 있는 문제이다.#include&lt;cstdio&gt;#include&lt;vector&gt;using namespace std;pair&lt;int,int&gt; seg[2000020];in...",
-    "content": "1019 책 페이지 해법            :link:  문제 링크      세그먼트 트리라는 자료구조의 구현 및 활용 방법만 알고 있다면 간단하게 해결할 수 있는 문제이다.#include&lt;cstdio&gt;#include&lt;vector&gt;using namespace std;pair&lt;int,int&gt; seg[2000020];int arr[1000010];void create_seg(int idx,int l,int r){\tif(l==r)\t{\t\tseg[idx] = make_pair(arr[l],arr[l]);\t\treturn;\t}\tint mid = (l+r)/2;\tcreate_seg(2*idx,l,mid);\tcreate_seg(2*idx+1,mid+1,r);\tint min,max;\tif(seg[2*idx].first&lt;seg[2*idx+1].first) min = seg[2*idx].first;\telse min = seg[2*idx+1].first;\tif(seg[2*idx].second&gt;seg[2*idx+1].second) max = seg[2*idx].second;\telse max = seg[2*idx+1].second;\tseg[idx] = make_pair(min,max);}pair&lt;int,int&gt; get_minmax(int idx,int l,int r,int begin,int end){\tif(r&lt;begin || l&gt;end) return make_pair(1000000001,0);\tif(l&gt;=begin &amp;&amp; r&lt;=end) return seg[idx];\telse{\t\tint mid = (l+r)/2;\t\tpair&lt;int,int&gt; tmp1,tmp2;\t\ttmp1 = get_minmax(idx*2,l,mid,begin,end);\t\ttmp2 = get_minmax(idx*2+1,mid+1,r,begin,end);\t\tint min,max;\t\tif(tmp1.first&lt;tmp2.first) min = tmp1.first;\t\telse min = tmp2.first;\t\tif(tmp1.second&gt;tmp2.second) max = tmp1.second;\t\telse max = tmp2.second;\t\treturn make_pair(min,max);\t}}int main(){\tint n,m;\tscanf(\"%d %d\",&amp;n,&amp;m);\tfor(int i=0;i&lt;n;i++)\t{\t\tscanf(\"%d\",&amp;arr[i]);\t}\tcreate_seg(1,0,n-1);\t/*\tfor(int i=0;i&lt;2*n;i++)\t{\t\tprintf(\"%d,%d \",seg[i].first,seg[i].second);\t}\t*/\tfor(int i=0;i&lt;m;i++)\t{\t\tint a,b;\t\tscanf(\"%d %d\",&amp;a,&amp;b);\t\tpair&lt;int,int&gt; result;\t\tresult = get_minmax(1,0,n-1,a-1,b-1);\t\tprintf(\"%d %d\\n\",result.first,result.second);\t}}"
+    "snippet": "2357 최댓값과 최솟값 해법            :link:  문제 링크      세그먼트 트리라는 자료구조의 구현 및 활용 방법만 알고 있다면 간단하게 해결할 수 있는 문제이다.#include&lt;cstdio&gt;#include&lt;vector&gt;using namespace std;pair&lt;int,int&gt; seg[2000020]...",
+    "content": "2357 최댓값과 최솟값 해법            :link:  문제 링크      세그먼트 트리라는 자료구조의 구현 및 활용 방법만 알고 있다면 간단하게 해결할 수 있는 문제이다.#include&lt;cstdio&gt;#include&lt;vector&gt;using namespace std;pair&lt;int,int&gt; seg[2000020];int arr[1000010];void create_seg(int idx,int l,int r){\tif(l==r)\t{\t\tseg[idx] = make_pair(arr[l],arr[l]);\t\treturn;\t}\tint mid = (l+r)/2;\tcreate_seg(2*idx,l,mid);\tcreate_seg(2*idx+1,mid+1,r);\tint min,max;\tif(seg[2*idx].first&lt;seg[2*idx+1].first) min = seg[2*idx].first;\telse min = seg[2*idx+1].first;\tif(seg[2*idx].second&gt;seg[2*idx+1].second) max = seg[2*idx].second;\telse max = seg[2*idx+1].second;\tseg[idx] = make_pair(min,max);}pair&lt;int,int&gt; get_minmax(int idx,int l,int r,int begin,int end){\tif(r&lt;begin || l&gt;end) return make_pair(1000000001,0);\tif(l&gt;=begin &amp;&amp; r&lt;=end) return seg[idx];\telse{\t\tint mid = (l+r)/2;\t\tpair&lt;int,int&gt; tmp1,tmp2;\t\ttmp1 = get_minmax(idx*2,l,mid,begin,end);\t\ttmp2 = get_minmax(idx*2+1,mid+1,r,begin,end);\t\tint min,max;\t\tif(tmp1.first&lt;tmp2.first) min = tmp1.first;\t\telse min = tmp2.first;\t\tif(tmp1.second&gt;tmp2.second) max = tmp1.second;\t\telse max = tmp2.second;\t\treturn make_pair(min,max);\t}}int main(){\tint n,m;\tscanf(\"%d %d\",&amp;n,&amp;m);\tfor(int i=0;i&lt;n;i++)\t{\t\tscanf(\"%d\",&amp;arr[i]);\t}\tcreate_seg(1,0,n-1);\t/*\tfor(int i=0;i&lt;2*n;i++)\t{\t\tprintf(\"%d,%d \",seg[i].first,seg[i].second);\t}\t*/\tfor(int i=0;i&lt;m;i++)\t{\t\tint a,b;\t\tscanf(\"%d %d\",&amp;a,&amp;b);\t\tpair&lt;int,int&gt; result;\t\tresult = get_minmax(1,0,n-1,a-1,b-1);\t\tprintf(\"%d %d\\n\",result.first,result.second);\t}}"
   },
   
   {

@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>RimSJ blog</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2024-01-04T15:16:12+09:00</updated>
+  <updated>2024-01-11T17:54:57+09:00</updated>
   <author>
     <name>Rim,Seung-Jae</name>
     <uri>http://localhost:4000/</uri>
@@ -20,11 +20,178 @@
 
   
   <entry>
+    <title>해양 침적 쓰레기 이미지를 활용한 인공지능 프로젝트</title>
+    <link href="http://localhost:4000/posts/%ED%95%B4%EC%96%91-%EC%B9%A8%EC%A0%81-%EC%93%B0%EB%A0%88%EA%B8%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/" rel="alternate" type="text/html" title="해양 침적 쓰레기 이미지를 활용한 인공지능 프로젝트" />
+    <published>2024-01-11T16:00:00+09:00</published>
+  
+    <updated>2024-01-11T16:00:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%ED%95%B4%EC%96%91-%EC%B9%A8%EC%A0%81-%EC%93%B0%EB%A0%88%EA%B8%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</id>
+    <content src="http://localhost:4000/posts/%ED%95%B4%EC%96%91-%EC%B9%A8%EC%A0%81-%EC%93%B0%EB%A0%88%EA%B8%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/" />
+    <author>
+      <name>Rim,Seung-Jae</name>
+    </author>
+
+  
+    
+    <category term="프로젝트" />
+    
+    <category term="인공지능" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      
+개요
+본 프로젝트에는 AI-Hub의 해양 침적 쓰레기 이미지 데이터셋이 사용되었다. 해당 데이터셋은 해양 침적 쓰레기의 수거를 위해 실시, 설계 조사를 보다 빠르고 효율적으로 수행하고자 조사 과정에서 생성되는 소나 조사 이미지와 수중 촬영 이미지를 통해 침적 쓰레기를 자동 인식하고 분류할 수 있도록 인공지능을 훈련하기 위한 데이터셋이다.
+
+우리는 해당 데이터셋의 선행 프로젝트에서 인공지능 모델로 YOLO를 선택했음에 주목했다. YOLO는 특정 이미지에서 여러가지 대상들이 각각 어떤 사물인지, 그리고 이미지 내에서 어느 위치에 있는지 탐지해내는 multi-label object detection 측면에서 강력하기로 유명한 모델이다.
+
+그러나 해당 데이터셋의 이미지들을 분석해보면 한 이미지 내에 여러가지...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>14725 개미굴</title>
+    <link href="http://localhost:4000/posts/14725-%EA%B0%9C%EB%AF%B8%EA%B5%B4/" rel="alternate" type="text/html" title="14725 개미굴" />
+    <published>2024-01-11T15:25:00+09:00</published>
+  
+    <updated>2024-01-11T15:25:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/14725-%EA%B0%9C%EB%AF%B8%EA%B5%B4/</id>
+    <content src="http://localhost:4000/posts/14725-%EA%B0%9C%EB%AF%B8%EA%B5%B4/" />
+    <author>
+      <name>Rim,Seung-Jae</name>
+    </author>
+
+  
+    
+    <category term="ps스터디" />
+    
+    <category term="boj" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      14725 개미굴 해법
+
+
+
+  
+    
+      :link:  문제 링크
+    
+  
+
+
+트라이라고 하는 독특한 트리 형태의 자료구조를 활용하는 문제. 단, 맛보기 정도의 난이도이기에 map을 활용하여 트리를 구현한다는 정도만 이해한다면 쉽게 풀 수 있다.
+
+#include&amp;lt;map&amp;gt;
+#include&amp;lt;set&amp;gt;
+#include&amp;lt;vector&amp;gt;
+#include&amp;lt;string&amp;gt;
+#include&amp;lt;iostream&amp;gt;
+#include&amp;lt;queue&amp;gt;
+
+using namespace std;
+
+class node
+{
+    public:
+        map&amp;lt;string,node*&amp;gt; children;
+        void insert(vecto...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>2042 구간 합 구하기</title>
+    <link href="http://localhost:4000/posts/2042-%EA%B5%AC%EA%B0%84-%ED%95%A9-%EA%B5%AC%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="2042 구간 합 구하기" />
+    <published>2024-01-10T14:05:00+09:00</published>
+  
+    <updated>2024-01-10T14:05:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/2042-%EA%B5%AC%EA%B0%84-%ED%95%A9-%EA%B5%AC%ED%95%98%EA%B8%B0/</id>
+    <content src="http://localhost:4000/posts/2042-%EA%B5%AC%EA%B0%84-%ED%95%A9-%EA%B5%AC%ED%95%98%EA%B8%B0/" />
+    <author>
+      <name>Rim,Seung-Jae</name>
+    </author>
+
+  
+    
+    <category term="ps스터디" />
+    
+    <category term="boj" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      2042 구간 합 구하기 해법
+
+
+
+  
+    
+      :link:  문제 링크
+    
+  
+
+
+세그먼트 트리를 이용하는 문제. 이전에 다루었던 1019 책 페이지 문제보다 조금 더 심화되어 세그먼트 트리의 모든 기능을 다룰 줄 알아야 해결할 수 있는 문제이다.
+
+#include&amp;lt;cstdio&amp;gt;
+
+using namespace std;
+
+long long seg[4000010];
+long long tmp[1000010];
+
+long long init(int start,int end,int idx)
+{
+    if(start == end)
+    {
+        seg[idx] = tmp[start];
+        return seg[idx];
+    }
+    int mid = (st...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
     <title>2357 최댓값과 최솟값</title>
     <link href="http://localhost:4000/posts/2357-%EC%B5%9C%EB%8C%93%EA%B0%92%EA%B3%BC-%EC%B5%9C%EC%86%9F%EA%B0%92/" rel="alternate" type="text/html" title="2357 최댓값과 최솟값" />
     <published>2024-01-03T15:28:00+09:00</published>
   
-    <updated>2024-01-03T15:28:00+09:00</updated>
+    <updated>2024-01-04T15:16:12+09:00</updated>
   
     <id>http://localhost:4000/posts/2357-%EC%B5%9C%EB%8C%93%EA%B0%92%EA%B3%BC-%EC%B5%9C%EC%86%9F%EA%B0%92/</id>
     <content src="http://localhost:4000/posts/2357-%EC%B5%9C%EB%8C%93%EA%B0%92%EA%B3%BC-%EC%B5%9C%EC%86%9F%EA%B0%92/" />
@@ -48,7 +215,7 @@
 
 
 
-      1019 책 페이지 해법
+      2357 최댓값과 최솟값 해법
 
 
 
@@ -78,7 +245,7 @@ void create_seg(int idx,int l,int r)
 	}
 	int mid = (l+r)/2;
 	create_seg(2*idx,l,mid);
-	create_seg(2*...
+	create_seg...
     </summary>
   
 
@@ -90,7 +257,7 @@ void create_seg(int idx,int l,int r)
     <link href="http://localhost:4000/posts/1019-%EC%B1%85-%ED%8E%98%EC%9D%B4%EC%A7%80/" rel="alternate" type="text/html" title="1019 책 페이지" />
     <published>2024-01-03T14:43:00+09:00</published>
   
-    <updated>2024-01-03T14:43:00+09:00</updated>
+    <updated>2024-01-04T15:16:12+09:00</updated>
   
     <id>http://localhost:4000/posts/1019-%EC%B1%85-%ED%8E%98%EC%9D%B4%EC%A7%80/</id>
     <content src="http://localhost:4000/posts/1019-%EC%B1%85-%ED%8E%98%EC%9D%B4%EC%A7%80/" />
@@ -143,172 +310,6 @@ void create_seg(int idx,int l,int r)
 3) ai &amp;lt; target 인 경우
 
   (a1a2…...
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>2079 팰린드롬</title>
-    <link href="http://localhost:4000/posts/2079-%ED%8C%B0%EB%A6%B0%EB%93%9C%EB%A1%AC/" rel="alternate" type="text/html" title="2079 팰린드롬" />
-    <published>2024-01-03T14:18:00+09:00</published>
-  
-    <updated>2024-01-03T14:18:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/2079-%ED%8C%B0%EB%A6%B0%EB%93%9C%EB%A1%AC/</id>
-    <content src="http://localhost:4000/posts/2079-%ED%8C%B0%EB%A6%B0%EB%93%9C%EB%A1%AC/" />
-    <author>
-      <name>Rim,Seung-Jae</name>
-    </author>
-
-  
-    
-    <category term="ps스터디" />
-    
-    <category term="boj" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      2079 팰린드롬 해법
-
-백준 온라인 저지 사이트에 올라와있는 문제이다.
-
-
-  
-    
-      :link:  문제 링크
-    
-  
-
-
-문자열 string이 주어졌을때 해당 문자열의 i번째 인덱스부터 j번째 인덱스까지의 부분문자열이 팰린드롬인지 아닌지를 P(i,j)라고 했을 때 아래의 공식이 성립한다
-
-1) string[i] == string[j]인 경우
-P(i,j) = P(i+1,j-1)
-
-2) string[i] != string[j]인 경우
-P(i,j) = false
-
-이를 활용한 동적계획법으로 모든 범위내의 i,j에 대한 P(i,j)를 구할 수 있다. 최소 개수의 팰린드롬으로 나누는 방법은 bfs를 통해서 구하면 된다.
-
-#include&amp;lt;vector&amp;gt;
-#include&amp;lt;qu...
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>20149 선분 교차 3</title>
-    <link href="http://localhost:4000/posts/20149-%EC%84%A0%EB%B6%84-%EA%B5%90%EC%B0%A8-3/" rel="alternate" type="text/html" title="20149 선분 교차 3" />
-    <published>2024-01-02T16:24:00+09:00</published>
-  
-    <updated>2024-01-02T16:24:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/20149-%EC%84%A0%EB%B6%84-%EA%B5%90%EC%B0%A8-3/</id>
-    <content src="http://localhost:4000/posts/20149-%EC%84%A0%EB%B6%84-%EA%B5%90%EC%B0%A8-3/" />
-    <author>
-      <name>Rim,Seung-Jae</name>
-    </author>
-
-  
-    
-    <category term="ps스터디" />
-    
-    <category term="boj" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      20149 선분 교차 3 해법
-
-백준 온라인 저지 사이트에 올라와있는 문제이다.
-
-
-  
-    
-      :link:  문제 링크
-    
-  
-
-
-풀이 할 때 일반적으로 떠오르는 해법인 평면에서 직선의 방정식을 이용해 각 직선의 기울기 등을 계산하는 방식은 부동소수점 오차로 인해 정확한 풀이가 불가능하다. 따라서 벡터의 외적을 활용하는 ccw 알고리즘을 써야 한다.
-
-이때 두 선분이 서로 일직선상에서 교차하는 경우에 대한 몇가지 예외처리까지 해주면 완전한 풀이가 가능하다.
-
-#include&amp;lt;cstdio&amp;gt;
-#include&amp;lt;cmath&amp;gt;  
-#include&amp;lt;algorithm&amp;gt;
-
-using namespace std;
-
-int ccw(long long x1,long long...
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>problem solving 스터디 시작</title>
-    <link href="http://localhost:4000/posts/problem-solving-%EC%8A%A4%ED%84%B0%EB%94%94-%EC%8B%9C%EC%9E%91/" rel="alternate" type="text/html" title="problem solving 스터디 시작" />
-    <published>2024-01-02T15:26:00+09:00</published>
-  
-    <updated>2024-01-03T13:28:44+09:00</updated>
-  
-    <id>http://localhost:4000/posts/problem-solving-%EC%8A%A4%ED%84%B0%EB%94%94-%EC%8B%9C%EC%9E%91/</id>
-    <content src="http://localhost:4000/posts/problem-solving-%EC%8A%A4%ED%84%B0%EB%94%94-%EC%8B%9C%EC%9E%91/" />
-    <author>
-      <name>Rim,Seung-Jae</name>
-    </author>
-
-  
-    
-    <category term="ps스터디" />
-    
-    <category term="스터디 시작" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      problem solving 스터디 시작
-
-
-각종 코딩 테스트 준비 및 개인 코딩 실력 향상을 위해서 대학교 동기인 Hyuk-San Kwon, slllldka과 함께 스터디 그룹을 만들었습니다. 제가 풀어서 공유하였던 문제나 다른 그룹원이 공유하였던 문제 중에 인상깊은 문제가 있다면 해법을 간단하게 정리하여 ps스터디 카테고리로 포스팅하겠습니다.
-
-
-  
-    
-      :link:  스터디 깃허브 저장소 바로가기
-    
-  
-
-
-
     </summary>
   
 
