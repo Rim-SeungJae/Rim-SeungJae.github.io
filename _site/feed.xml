@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>RimSJ blog</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2024-01-11T17:54:57+09:00</updated>
+  <updated>2024-03-08T16:38:39+09:00</updated>
   <author>
     <name>Rim,Seung-Jae</name>
     <uri>http://localhost:4000/</uri>
@@ -20,11 +20,146 @@
 
   
   <entry>
+    <title>개 이미지 분류 모델</title>
+    <link href="http://localhost:4000/posts/%EA%B0%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%84%EB%A5%98-%EB%AA%A8%EB%8D%B8/" rel="alternate" type="text/html" title="개 이미지 분류 모델" />
+    <published>2024-03-08T16:30:00+09:00</published>
+  
+    <updated>2024-03-08T16:30:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/%EA%B0%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%84%EB%A5%98-%EB%AA%A8%EB%8D%B8/</id>
+    <content src="http://localhost:4000/posts/%EA%B0%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%84%EB%A5%98-%EB%AA%A8%EB%8D%B8/" />
+    <author>
+      <name>Rim,Seung-Jae</name>
+    </author>
+
+  
+    
+    <category term="프로젝트" />
+    
+    <category term="인공지능" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      
+개요
+이 프로젝트는 강아지 이미지를 종에 따라 분류할 수 있는 간단한 CNN 모델의 구현을 다루고 있습니다.
+
+
+모델 구조
+아래와 같은 구조로 모델을 설계하였습니다.
+
+
+  
+    
+      
+    
+  
+
+
+
+  
+    
+      
+    
+  
+
+
+–
+초기 학습 결과
+
+
+  
+    
+      
+    
+  
+
+
+위의 그래프는 모델의 초기 훈련 결과를 보여줍니다(가로축은 반복 횟수입니다). 훈련 정확도는 10회 이상의 반복에서 계속 상승하여 100%에 가까워집니다. 그러나 검증 정확도는 두 번째 반복 이후로 20% 근처에 묶여 있습니다. 훈련 손실도 유사한 상황을 보입니다. 훈련 손실은 10회 이상의 반복에서 계속 감소합니다. 그러나 검증 손실은 두 번째 반복 이후에 오히려 상승합니다....
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>SKKU 뭐먹지</title>
+    <link href="http://localhost:4000/posts/SKKU-%EB%AD%90%EB%A8%B9%EC%A7%80/" rel="alternate" type="text/html" title="SKKU 뭐먹지" />
+    <published>2024-03-05T12:30:00+09:00</published>
+  
+    <updated>2024-03-05T12:30:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/SKKU-%EB%AD%90%EB%A8%B9%EC%A7%80/</id>
+    <content src="http://localhost:4000/posts/SKKU-%EB%AD%90%EB%A8%B9%EC%A7%80/" />
+    <author>
+      <name>Rim,Seung-Jae</name>
+    </author>
+
+  
+    
+    <category term="프로젝트" />
+    
+    <category term="웹개발" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      
+개요
+‘SKKU 뭐먹지’란 매일 식사 메뉴를 고민하는 성균관대학교 자연과학캠퍼스 학생들을 위한 식당 추천 서비스입니다.이런 고민은 학생들이 학교 근처의 모든 음식점들에 대한 정보를 알기 힘들다는 점에서 비롯됩니다. 그러므로 학교 근처의 다양한 음식점 정보를 제공하는 웹 서비스를 제공하고자 합니다.
+
+
+웹사이트 구조
+‘SKKU 뭐먹지’는 정적 웹 페이지입니다. 그러므로 백엔드와의 연결이 필요 없는 몇개의 html 및 이미지 파일들로 구성되어 있습니다.
+
+1) 메인화면
+
+
+  
+    
+      
+    
+  
+
+
+웹사이트의 메인화면입니다. 상단의 네비게이션 바를 활용하여 웹의 다른 여러가지 기능들을 이용할 수 있습니다.
+
+2) 음식점 지도
+
+
+
+
+
+
+
+네비게이션 바에서 ‘음식점 지도’를 클릭하면 열리...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
     <title>해양 침적 쓰레기 이미지를 활용한 인공지능 프로젝트</title>
     <link href="http://localhost:4000/posts/%ED%95%B4%EC%96%91-%EC%B9%A8%EC%A0%81-%EC%93%B0%EB%A0%88%EA%B8%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/" rel="alternate" type="text/html" title="해양 침적 쓰레기 이미지를 활용한 인공지능 프로젝트" />
     <published>2024-01-11T16:00:00+09:00</published>
   
-    <updated>2024-01-11T16:00:00+09:00</updated>
+    <updated>2024-03-05T12:56:40+09:00</updated>
   
     <id>http://localhost:4000/posts/%ED%95%B4%EC%96%91-%EC%B9%A8%EC%A0%81-%EC%93%B0%EB%A0%88%EA%B8%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</id>
     <content src="http://localhost:4000/posts/%ED%95%B4%EC%96%91-%EC%B9%A8%EC%A0%81-%EC%93%B0%EB%A0%88%EA%B8%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/" />
@@ -66,7 +201,7 @@
     <link href="http://localhost:4000/posts/14725-%EA%B0%9C%EB%AF%B8%EA%B5%B4/" rel="alternate" type="text/html" title="14725 개미굴" />
     <published>2024-01-11T15:25:00+09:00</published>
   
-    <updated>2024-01-11T15:25:00+09:00</updated>
+    <updated>2024-01-11T17:55:26+09:00</updated>
   
     <id>http://localhost:4000/posts/14725-%EA%B0%9C%EB%AF%B8%EA%B5%B4/</id>
     <content src="http://localhost:4000/posts/14725-%EA%B0%9C%EB%AF%B8%EA%B5%B4/" />
@@ -128,7 +263,7 @@ class node
     <link href="http://localhost:4000/posts/2042-%EA%B5%AC%EA%B0%84-%ED%95%A9-%EA%B5%AC%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="2042 구간 합 구하기" />
     <published>2024-01-10T14:05:00+09:00</published>
   
-    <updated>2024-01-10T14:05:00+09:00</updated>
+    <updated>2024-01-11T17:55:26+09:00</updated>
   
     <id>http://localhost:4000/posts/2042-%EA%B5%AC%EA%B0%84-%ED%95%A9-%EA%B5%AC%ED%95%98%EA%B8%B0/</id>
     <content src="http://localhost:4000/posts/2042-%EA%B5%AC%EA%B0%84-%ED%95%A9-%EA%B5%AC%ED%95%98%EA%B8%B0/" />
@@ -180,136 +315,6 @@ long long init(int start,int end,int idx)
         return seg[idx];
     }
     int mid = (st...
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>2357 최댓값과 최솟값</title>
-    <link href="http://localhost:4000/posts/2357-%EC%B5%9C%EB%8C%93%EA%B0%92%EA%B3%BC-%EC%B5%9C%EC%86%9F%EA%B0%92/" rel="alternate" type="text/html" title="2357 최댓값과 최솟값" />
-    <published>2024-01-03T15:28:00+09:00</published>
-  
-    <updated>2024-01-04T15:16:12+09:00</updated>
-  
-    <id>http://localhost:4000/posts/2357-%EC%B5%9C%EB%8C%93%EA%B0%92%EA%B3%BC-%EC%B5%9C%EC%86%9F%EA%B0%92/</id>
-    <content src="http://localhost:4000/posts/2357-%EC%B5%9C%EB%8C%93%EA%B0%92%EA%B3%BC-%EC%B5%9C%EC%86%9F%EA%B0%92/" />
-    <author>
-      <name>Rim,Seung-Jae</name>
-    </author>
-
-  
-    
-    <category term="ps스터디" />
-    
-    <category term="boj" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      2357 최댓값과 최솟값 해법
-
-
-
-  
-    
-      :link:  문제 링크
-    
-  
-
-
-세그먼트 트리라는 자료구조의 구현 및 활용 방법만 알고 있다면 간단하게 해결할 수 있는 문제이다.
-
-#include&amp;lt;cstdio&amp;gt;
-#include&amp;lt;vector&amp;gt;
-
-using namespace std;
-
-pair&amp;lt;int,int&amp;gt; seg[2000020];
-int arr[1000010];
-
-void create_seg(int idx,int l,int r)
-{
-	if(l==r)
-	{
-		seg[idx] = make_pair(arr[l],arr[l]);
-		return;
-	}
-	int mid = (l+r)/2;
-	create_seg(2*idx,l,mid);
-	create_seg...
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>1019 책 페이지</title>
-    <link href="http://localhost:4000/posts/1019-%EC%B1%85-%ED%8E%98%EC%9D%B4%EC%A7%80/" rel="alternate" type="text/html" title="1019 책 페이지" />
-    <published>2024-01-03T14:43:00+09:00</published>
-  
-    <updated>2024-01-04T15:16:12+09:00</updated>
-  
-    <id>http://localhost:4000/posts/1019-%EC%B1%85-%ED%8E%98%EC%9D%B4%EC%A7%80/</id>
-    <content src="http://localhost:4000/posts/1019-%EC%B1%85-%ED%8E%98%EC%9D%B4%EC%A7%80/" />
-    <author>
-      <name>Rim,Seung-Jae</name>
-    </author>
-
-  
-    
-    <category term="ps스터디" />
-    
-    <category term="boj" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      1019 책 페이지 해법
-
-백준 온라인 저지 사이트에 올라와있는 문제이다.
-
-
-  
-    
-      :link:  문제 링크
-    
-  
-
-
-특수한 알고리즘이 필요한 문제는 아니고 수학적인 통찰력으로 해결할 수 있는 문제이다. 입력받은 수의 각 자릿수들을 a1a2…ai…an-1an라고 할때 i번째 자리에 특정 숫자가 몇번씩 등장하는지 고민해보면 문제를 해결할 수 있다.
-
-숫자 target이 i번째 자리에 몇번 등장하는지 구하는 방법은 아래와 같다.
-
-1) ai == target 인 경우
-
-  a1a2…ai-1 * 10n-i + ai+1ai+2…an + 1
-
-
-2) ai &amp;gt; target 인 경우
-
-  a1a2…ai-1 * 10n-i
-
-
-3) ai &amp;lt; target 인 경우
-
-  (a1a2…...
     </summary>
   
 
