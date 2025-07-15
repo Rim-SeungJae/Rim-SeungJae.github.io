@@ -29,9 +29,11 @@ Assets\Undead Survivor\Data 디렉토리에 다양한 ScriptableObject 구현을
 
 'Undead Survivor' 에셋의 초기 `PoolManager`는 다음과 같은 코드를 사용했습니다.
 
+{% highlight c# %}
 // Before: "0"은 무엇을 의미하는가?
 GameObject enemy = pool.Get(0);
 GameObject bullet = pool.Get(1);
+{% end highlight %}
 
 이 `pool.Get(0)`과 같은 코드는 대표적인 **매직 넘버(Magic Number)**입니다. 숫자 `0`이 '소환할 적의 prefab'이라는 사실은 오직 코드를 작성한 사람과 `PoolManager`의 프리팹 배열 순서를 아는 사람만 알 수 있습니다. 만약 누군가 실수로 Inspector에서 프리팹
 배열의 순서를 바꾸기라도 한다면, 게임은 말없이 오작동하기 시작할 것입니다.
@@ -40,6 +42,7 @@ GameObject bullet = pool.Get(1);
 
 이 문제를 해결하기 위해, 풀링할 오브젝트의 종류를 `enum`으로 명확하게 정의했습니다.
 
+{% highlight c# %}
 // 1. 오브젝트 종류를 enum으로 정의
 public enum PoolableType { Enemy, Bullet, Gem, Gold, HitEffect }
 
@@ -49,6 +52,7 @@ private Dictionary<PoolableType, GameObject> prefabDictionary;
 // 3. 사용할 때는 명시적인 이름으로 호출
 GameObject enemy = pool.Get(PoolableType.Enemy);
 GameObject bullet = pool.Get(PoolableType.Bullet);
+{% end highlight %}
 
 이제 코드는 누가 보더라도 명확해졌습니다. `pool.Get(PoolableType.Enemy)`는 '적 오브젝트를 풀에서 가져온다'는 의미를 명확하게 전달합니다. Inspector에서의 순서가 바뀌어도, 프리팹이 바뀌어도 코드는 전혀 영향을 받지 않습니다. 이는 사소해 보이지만, 프로젝트의 규모가 커질수록 실수를 방지하고 안정성을 높이는 매우 중요한 리팩토링입니다.
 깃허브 저장소의 Assets\Undead Survivor\Script 경로에 위치한 'Poolmanager.cs'를 통해 실제 구현을 확인하실 수 있으니 참고 바랍니다.
