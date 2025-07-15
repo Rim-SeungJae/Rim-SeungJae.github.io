@@ -1,6 +1,6 @@
 ---
 title: 스탯 시스템 리팩토링
-date: 2025-07-16 10:45:00 +0900
+date: 2025-07-16 7:45:00 +0900
 categories: [프로젝트, Eternal-Survival]
 tags: [게임개발, Unity, Eternal Return]
 ---
