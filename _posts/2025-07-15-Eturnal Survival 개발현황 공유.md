@@ -1,5 +1,5 @@
 ---
-title: "Eternal Survival 개발현황 공유"
+title: Eternal Survival 개발현황 공유
 date: 2025-07-15 17:40:00 +0900
 categories: [프로젝트, Eternal Survival]
 tags: [게임개발, Unity, Eternal Return]

@@ -1,6 +1,5 @@
 ---
 title: Eternal Survival - 이터널 리턴 IP를 활용한 뱀서라이크 게임 개발기
-author: Rim-Seungjae
 date: 2025-07-15 10:00:00 +0900
 categories: [프로젝트, Eternal Survival]
 tags: [게임개발, Unity, Eternal Return]
