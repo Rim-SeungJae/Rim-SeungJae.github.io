@@ -22,7 +22,7 @@ public float speed = 5.0f;
 public float damage = 10.0f;
 void ApplyGear(float rate)
 {
-damage \*= 1+rate;
+damage = damage \* (1+rate);
 }
 {% end highlight %}
 
