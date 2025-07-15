@@ -35,7 +35,7 @@ float finalSpeed = player.baseSpeed _ shoe.speedModifier _ speedBuff.modifier;
 // 만약 버프가 중첩된다면?
 // 만약 특정 아이템을 장착 해제한다면?
 // 만약 버프의 지속시간이 끝난다면?
-{% end highlight %}
+{% endhighlight %}
 
 이러한 연산은 매번 스탯이 변경될 때마다 모든 요소를 다시 계산해야 하며, 다음과 같은 명확한 한계에 부딪혔습니다.
 
@@ -70,7 +70,7 @@ private readonly List<StatModifier> modifiers = new List<StatModifier>();
     public void RemoveAllModifiersFromSource(object source) { ... }
 
 }
-{% end highlight %}
+{% endhighlight %}
 
 이제 플레이어의 `speed`는 더 이상 `float`이 아닌 `ModifiableStat` 객체가 됩니다.
 
