@@ -24,7 +24,7 @@ void ApplyGear(float rate)
 {
 damage = damage \* (1+rate);
 }
-{% end highlight %}
+{% endhighlight %}
 
 이 방식은 간단하고 직관적입니다. 하지만 "이동 속도 10% 증가 신발"이나 "15초간 공격력 20% 증가 물약" 같은 아이템과 스킬이 추가되는 순간, 상황은 복잡해집니다.
 
