@@ -20,6 +20,7 @@ public float speed = 5.0f;
 
 // Weapon.cs
 public float damage = 10.0f;
+
 void ApplyGear(float rate)
 {
     damage = damage * (1+rate);
