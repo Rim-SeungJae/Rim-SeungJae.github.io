@@ -14,7 +14,7 @@ tags: [게임개발, Unity, Eternal Return]
 프로젝트 원형이 되었던 'Undead Survivor'에셋에서, 플레이어의 이동 속도나 무기의 공격력 같은 스탯은 단순한 `float` 변수였습니다.
 특히 다른 아이템의 영향을 받아 무기의 스탯이 변경되는 경우 오브젝트가 가지고 있던 변수의 값을 직접 접근하여 변경하는 방식을 사용하고 있었습니다.
 
-{% highlight c# %}
+```csharp
 // Player.cs
 public float speed = 5.0f;
 
@@ -22,20 +22,20 @@ public float speed = 5.0f;
 public float damage = 10.0f;
 void ApplyGear(float rate)
 {
-damage = damage \* (1+rate);
+    damage = damage * (1+rate);
 }
-{% endhighlight %}
+```
 
 이 방식은 간단하고 직관적입니다. 하지만 "이동 속도 10% 증가 신발"이나 "15초간 공격력 20% 증가 물약" 같은 아이템과 스킬이 추가되는 순간, 상황은 복잡해집니다.
 
-{% highlight c# %}
+```csharp
 // 아이템과 버프가 추가될수록 코드는 점점 복잡해진다.
-float finalSpeed = player.baseSpeed _ shoe.speedModifier _ speedBuff.modifier;
+player.speed = player.speed * shoe.speedModifier * speedBuff.modifier;
 
 // 만약 버프가 중첩된다면?
 // 만약 특정 아이템을 장착 해제한다면?
 // 만약 버프의 지속시간이 끝난다면?
-{% endhighlight %}
+```
 
 이러한 연산은 매번 스탯이 변경될 때마다 모든 요소를 다시 계산해야 하며, 다음과 같은 명확한 한계에 부딪혔습니다.
 
