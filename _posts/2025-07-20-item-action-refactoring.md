@@ -43,13 +43,14 @@ public virtual string GetDescription(Item item) { /_ ... _/ }
 
 무기 아이템의 행동을 담당하는 `Action_Weapon` 클래스입니다. 이 클래스의 핵심은 `TypeDropdown` 어트리뷰트와 `SerializableSystemType`을 활용하여, 에디터에서 `WeaponBase`를 상속받는 어떤 무기 컴포넌트(`Weapon`, `QuakeWeapon` 등)라도 동적으로 연결할 수 있게 한 것입니다.
 
-{ % highlight c# %}
+{% highlight c# %}
 // Assets/Undead Survivor/Script/Action_Weapon.cs
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Action_Weapon", menuName = "Item Actions/Generic Weapon")]
 public class Action_Weapon : ItemAction
 {
+[TypeDropdown(typeof(WeaponBase))]
 public SerializableSystemType weaponType; // 에디터에서 Weapon 또는 QuakeWeapon 선택
 
     public override void OnEquip(Item item)
