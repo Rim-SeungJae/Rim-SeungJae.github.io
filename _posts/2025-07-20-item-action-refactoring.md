@@ -24,18 +24,18 @@ tags: [게임개발, Unity, Eternal Return]
 
 가장 먼저, 모든 아이템 행동의 공통적인 '계약'을 정의하는 추상 클래스 `ItemAction`을 만들었습니다.
 
-{% highlight c# %}
+```csharp
 // Assets/Undead Survivor/Script/ItemAction.cs
 using UnityEngine;
 
 public abstract class ItemAction : ScriptableObject
 {
-public abstract void OnEquip(Item item);
-public abstract void OnLevelUp(Item item);
-public abstract void OnUpdate(Item item);
-public virtual string GetDescription(Item item) { /_ ... _/ }
+    public abstract void OnEquip(Item item);
+    public abstract void OnLevelUp(Item item);
+    public abstract void OnUpdate(Item item);
+    public virtual string GetDescription(Item item) { /* ... */ }
 }
-{% endhighlight %}
+```
 
 이 클래스는 아이템이 장착될 때(`OnEquip`), 레벨업할 때(`OnLevelUp`), 매 프레임 업데이트될 때(`OnUpdate`), 그리고 UI에 설명을 표시할 때(`GetDescription`) 어떤 동작을 해야 하는지를 정의합니다. 각 구체적인 아이템 행동은 이 `ItemAction`을 상속받아 자신만의 로직을 구현하게 됩니다.
 
@@ -43,15 +43,15 @@ public virtual string GetDescription(Item item) { /_ ... _/ }
 
 무기 아이템의 행동을 담당하는 `Action_Weapon` 클래스입니다. 이 클래스의 핵심은 `TypeDropdown` 어트리뷰트와 `SerializableSystemType`을 활용하여, 에디터에서 `WeaponBase`를 상속받는 어떤 무기 컴포넌트(`Weapon`, `QuakeWeapon` 등)라도 동적으로 연결할 수 있게 한 것입니다.
 
-{ % highlight c# %}
+```csharp
 // Assets/Undead Survivor/Script/Action_Weapon.cs
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Action_Weapon", menuName = "Item Actions/Generic Weapon")]
 public class Action_Weapon : ItemAction
 {
-[TypeDropdown(typeof(WeaponBase))]
-public SerializableSystemType weaponType; // 에디터에서 Weapon 또는 QuakeWeapon 선택
+    [TypeDropdown(typeof(WeaponBase))]
+    public SerializableSystemType weaponType; // 에디터에서 Weapon 또는 QuakeWeapon 선택
 
     public override void OnEquip(Item item)
     {
@@ -71,9 +71,8 @@ public SerializableSystemType weaponType; // 에디터에서 Weapon 또는 Quake
         // 레벨별 스탯 증가량을 동적으로 계산하여 설명 생성
         // ... (생략: 복잡한 스탯 계산 로직)
     }
-
 }
-{% endhighlight %}
+```
 
 이제 새로운 무기 타입이 추가되더라도 `Action_Weapon.cs`를 수정할 필요 없이, `ItemData` 에셋에서 `Action_Weapon`을 연결하고 `weaponType`만 지정해주면 됩니다.
 
@@ -81,17 +80,17 @@ public SerializableSystemType weaponType; // 에디터에서 Weapon 또는 Quake
 
 기존 `Gear.cs`의 역할을 대체하는 `Action_StatBoostGear` 클래스입니다. 이 클래스는 어떤 대상(`Player` 또는 `Weapon`)의 어떤 스탯에 어떤 타입의 `StatModifier`를 적용할지를 데이터(`statValues`, `modifierType`)로 정의합니다.
 
-{% highlight c# %}
+```csharp
 // Assets/Undead Survivor/Script/Action_StatBoostGear.cs
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Action_StatBoostGear", menuName = "Item Actions/Stat Boost Gear")]
 public class Action_StatBoostGear : ItemAction
 {
-public enum Target { Player, Weapon }
-public Target targetType;
-public float[] statValues; // 레벨별 적용 값
-public StatModifierType modifierType; // Flat, Additive, Multiplicative
+    public enum Target { Player, Weapon }
+    public Target targetType;
+    public float[] statValues; // 레벨별 적용 값
+    public StatModifierType modifierType; // Flat, Additive, Multiplicative
 
     public override void OnEquip(Item item)
     {
@@ -139,9 +138,8 @@ public StatModifierType modifierType; // Flat, Additive, Multiplicative
         // 레벨별 스탯 증가량을 동적으로 계산하여 설명 생성
         // ... (생략: 복잡한 스탯 계산 로직)
     }
-
 }
-{% endhighlight %}
+```
 
 이로써 `Gear.cs`는 더 이상 필요 없게 되었고, 새로운 장비 효과는 `Action_StatBoostGear` 에셋을 만들고 값만 설정해주면 됩니다. `StatModifier`의 `Source`를 `this` (ScriptableObject 인스턴스)로 설정하여, 해당 장비가 비활성화되거나 레벨업할 때 이 장비가 적용했던 모든 모디파이어를 쉽게 제거할 수 있게 한 것이 핵심입니다.
 
@@ -149,7 +147,7 @@ public StatModifierType modifierType; // Flat, Additive, Multiplicative
 
 가장 큰 변화는 `Item.cs`가 더 이상 아이템의 구체적인 행동을 직접 처리하지 않고, `ItemData`에 연결된 `ItemAction` ScriptableObject에게 책임을 위임한다는 점입니다.
 
-{% highlight c# %}
+```csharp
 // Assets/Undead Survivor/Script/Item.cs (핵심 변경 부분)
 
 public ItemAction itemAction; // ItemData에 연결된 ItemAction 참조
@@ -170,7 +168,7 @@ void OnEnable()
 textDesc.text = itemAction?.GetDescription(this);
 // ...
 }
-{% endhighlight %}
+```
 
 이제 `Item.cs`는 아이템의 '데이터'와 '행동'을 연결하는 단순한 브릿지 역할만 수행하게 됩니다. 이는 **단일 책임 원칙**을 준수하는 설계입니다.
 
