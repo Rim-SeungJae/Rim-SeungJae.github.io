@@ -50,7 +50,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Action_Weapon", menuName = "Item Actions/Generic Weapon")]
 public class Action_Weapon : ItemAction
 {
-[TypeDropdown(typeof(WeaponBase))]
 public SerializableSystemType weaponType; // 에디터에서 Weapon 또는 QuakeWeapon 선택
 
     public override void OnEquip(Item item)
