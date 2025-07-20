@@ -1,7 +1,6 @@
 ---
-layout: post
 title: "Unity 아이템 시스템 리팩토링"
-date: 2025-07-16 09:00:00 +0900
+date: 2025-07-20 12:00:00 +0900
 categories: [프로젝트, Eternal-Survival]
 tags: [게임개발, Unity, Eternal Return]
 ---
