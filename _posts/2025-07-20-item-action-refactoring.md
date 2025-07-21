@@ -2,7 +2,7 @@
 title: "Unity 아이템 시스템 리팩토링"
 date: 2025-07-20 12:00:00 +0900
 categories: [프로젝트, Eternal-Survival]
-tags: [게임개발, Unity, Eternal Return]
+tags: [게임개발, Unity, Eternal Return, 게임 시스템]
 ---
 
 안녕하세요. 오늘은 지난번 무기 시스템 개선에 이어서 진행한 아이템 시스템 전체에 반영된 개선 사항이 있어서 공유하고자 합니다.

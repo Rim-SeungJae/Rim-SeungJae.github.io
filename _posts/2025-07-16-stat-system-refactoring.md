@@ -2,7 +2,7 @@
 title: 스탯 시스템 리팩토링
 date: 2025-07-16 7:45:00 +0900
 categories: [프로젝트, Eternal-Survival]
-tags: [게임개발, Unity, Eternal Return]
+tags: [게임개발, Unity, Eternal Return, 게임 시스템]
 ---
 
 안녕하세요, 지난번에 이은 Eternal Survival 개발 노트입니다.

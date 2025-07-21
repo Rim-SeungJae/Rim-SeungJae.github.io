@@ -2,7 +2,7 @@
 title: "Unity 무기 시스템 리팩토링"
 date: 2025-07-16 21:00:00 +0900
 categories: [프로젝트, Eternal-Survival]
-tags: [게임개발, Unity, Eternal Return]
+tags: [게임개발, Unity, Eternal Return, 게임 시스템]
 ---
 
 ## 퀘이크 무기 추가, 그리고 마주한 고민
