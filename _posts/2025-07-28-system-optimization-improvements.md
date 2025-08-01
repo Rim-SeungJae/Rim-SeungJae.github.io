@@ -88,26 +88,42 @@ GameManager.instance.UnregisterEnemy(this);
 
 - 시간 정지와 같이 모든 적에 적용해야 하는 효과 최적화
 
-### 가시성 체크 로직 개선
+### 가시성 관리 최적화
 
-카메라 영역 밖의 적들에 대한 불필요한 연산을 제거했습니다:
+밤/낮 시스템과 연계된 적의 가시성 관리를 최적화했습니다:
 
 {% highlight c# %}
-// 화면 밖 적들은 복잡한 AI 로직 스킵
-if (!IsVisibleFromCamera())
-{
-// 기본적인 이동만 수행
-SimpleMovement();
-return;
-}
+// 성능 최적화: 거리 계산을 일정 간격마다 수행
+visibilityCheckTimer += Time.deltaTime;
 
-// 화면 안의 적들만 전체 AI 로직 실행
-FullAILogic();
+if (visibilityCheckTimer >= VISIBILITY_CHECK_INTERVAL)
+{
+    visibilityCheckTimer = 0f;
+    
+    // 밤에는 플레이어의 빛 범위 안에 있을 때만 보이도록 처리
+    if (GameManager.instance.IsNight())
+    {
+        Vector3 playerPos = GameManager.instance.player.transform.position;
+        // sqrMagnitude 사용으로 제곱근 연산 제거
+        float sqrDist = (playerPos - transform.position).sqrMagnitude;
+        float lightRadiusHalf = GameManager.instance.dayNightController.CurrentLightRadius / 2.0f;
+        bool isVisible = sqrDist < lightRadiusHalf * lightRadiusHalf;
+        
+        if (isCurrentlyVisible != isVisible)
+        {
+            isCurrentlyVisible = isVisible;
+            spriter.enabled = isVisible;
+            if (shadow != null)
+                shadow.gameObject.SetActive(isVisible);
+        }
+    }
+}
 {% endhighlight %}
 
-**성능 개선 결과:**
-
-- 밤/낮 기능으로 인한 잦은 연산 최소화
+**최적화 포인트:**
+- **간격 기반 체크**: 매 프레임이 아닌 0.1초마다 가시성 검사
+- **제곱근 연산 제거**: `sqrMagnitude` 사용으로 성능 향상
+- **상태 변화 시에만 업데이트**: 가시성이 실제로 바뀔 때만 스프라이트 상태 변경
 
 ## 오브젝트 풀 매니저 동적 확장
 
@@ -118,8 +134,7 @@ FullAILogic();
 {% highlight c# %}
 public GameObject Get(string poolTag)
 {
-// 풀에 사용 가능한 객체가 없으면 null 반환
-// 이로 인해 게임 중 오류 발생 가능
+// 풀에 사용 가능한 객체가 없으면 1개를 생성해 반환
 }
 {% endhighlight %}
 
