@@ -1,6 +1,6 @@
 ---
 title: "혜진 캐릭터 전용 무기 및 무기 진화 시스템 추가"
-date: 2025-08-31 012:00:00 +0900
+date: 2025-07-31 012:00:00 +0900
 categories: [프로젝트, Eternal-Survival]
 tags: [게임개발, Unity, Eternal Return, 게임 콘텐츠]
 ---
