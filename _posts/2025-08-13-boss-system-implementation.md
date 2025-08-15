@@ -36,6 +36,7 @@ public abstract class BossBase : Enemy
 
 1. **충전 단계**: RadialFill을 통한 시각적 예고
 2. **공격 단계**: 충전된 영역에 데미지 적용
+   ![Image](https://github.com/user-attachments/assets/2749ebd7-d5e6-491d-ba73-188ff8899ab2)
 
 {% highlight c# %}
 protected override void PerformSpecialAttack()
@@ -71,7 +72,7 @@ isPerformingSpecialAttack = true;
 
 ### RadialFill 셰이더를 활용한 시각적 피드백
 
-가장 흥미로운 부분은 RadialFill 셰이더를 활용한 시각적 효과 구현이었습니다. 처음에는 유키의 스킬 이펙트가 차오르는 효과를 프레임별로 직접 그려서 애니메이션으로 구현하려고 했습니다. 하지만 프레임별로 그려서 애니메이션으로 구현하는 것은 너무 비효율적이고 관리하기 어려웠습니다.
+가장 흥미로운 부분은 RadialFill 셰이더를 활용한 시각적 효과 구현이었습니다. 처음에는 유키의 화무십일홍을 구현하면서 했던 것처럼 프레임별로 직접 그려서 애니메이션으로 구현하려고 했습니다. 하지만 프레임별로 그려서 애니메이션으로 구현하는 것은 너무 비효율적이고 관리하기 어려웠습니다.
 
 #### RadialFill 셰이더의 구현 원리
 
@@ -146,6 +147,7 @@ float elapsed = 0f;
 
 ### Yuki 무기로의 확장
 
+![Image](https://github.com/user-attachments/assets/9ed896cb-9c56-44a9-b88e-b767548db5e2)
 보스 시스템에서 구현한 변경사항들을 대부분 유키의 화무십일홍에도 반영하였습니다. 확장 가능한 형태로 구현하였기 때문에 빠르게 적용할 수 있었습니다.
 
 ### 개발 후기
