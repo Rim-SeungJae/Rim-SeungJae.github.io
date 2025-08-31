@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Unity 뱀파이어 서바이벌 게임: 보스 특수공격 시스템 리팩토링으로 확장성 확보하기"
+title: "보스 특수공격 시스템 리팩토링으로 확장성 확보하기"
 date: 2025-08-20 10:00:00 +0900
 categories: [Unity, GameDev, Programming]
 tags: [Unity, 뱀파이어서바이벌, 리팩토링, 보스시스템]

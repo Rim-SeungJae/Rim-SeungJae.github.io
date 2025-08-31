@@ -1,5 +1,5 @@
 ---
-title: Unity 뱀파이어 서바이벌 게임 - 신규 보스 오메가 구현과 다중 특수공격 시스템
+title: 신규 보스 오메가
 date: 2025-08-23 14:30:00 +0900
 categories: [프로젝트, Eternal-Survival]
 tags: [게임개발, Unity, 보스시스템]

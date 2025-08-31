@@ -1,5 +1,5 @@
 ---
-title: Unity 뱀파이어 서바이벌 게임 - 신규 보스 위클라인과 독성 전투 시스템 구현
+title: 신규 보스 위클라인
 date: 2025-08-30 15:00:00 +0900
 categories: [프로젝트, Eternal-Survival]
 tags: [게임개발, Unity, 보스시스템]
