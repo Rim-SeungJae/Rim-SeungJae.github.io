@@ -157,6 +157,7 @@ if (!GameManager.instance.isLive || !isEnabled) return;
     }
 
 }
+{% endhighlight %}
 
 ### 3. 신경가스 살포 - 위치 기반 버프 시스템
 
