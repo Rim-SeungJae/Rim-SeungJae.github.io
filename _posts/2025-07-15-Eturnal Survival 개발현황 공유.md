@@ -40,16 +40,16 @@ GameObject bullet = pool.Get(1);
 
 #### 해결책: `PoolTagSelector`를 활용한 직관적 관리
 
-이 문제를 해결하기 위해, 풀링할 오브젝트의 종류를 **문자열 태그**로 관리하되, **`PoolTagSelector` 커스텀 어트리뷰트**를 활용해 Unity Inspector에서 직관적으로 선택할 수 있도록 개선했습니다.
+이 문제를 해결하기 위해, 풀링할 오브젝트의 종류를 **문자열 태그**로 관리하도록 `PoolManager`를 개선했습니다.
 
 {% highlight c# %}
 // 1. PoolManager는 string 태그를 키로 사용하는 Dictionary로 프리팹을 관리
 [System.Serializable]
 public class Pool
 {
-    public string tag;      // "Enemy", "Bullet", "Gem" 등의 명시적 태그
-    public GameObject prefab;
-    public int size;
+public string tag; // "Enemy", "Bullet", "Gem" 등의 명시적 태그
+public GameObject prefab;
+public int size;
 }
 
 private Dictionary<string, Queue<GameObject>> poolDictionary;
@@ -65,13 +65,14 @@ GameObject bullet = pool.Get("Bullet");
 // 3. PoolTagSelector 어트리뷰트 사용 예시
 public class Weapon : MonoBehaviour
 {
-    [PoolTagSelector]
-    public string bulletTag;    // Inspector에서 드롭다운으로 선택 가능
+[PoolTagSelector]
+public string bulletTag; // Inspector에서 드롭다운으로 선택 가능
 
     void Fire()
     {
         GameObject bullet = PoolManager.instance.Get(bulletTag);
     }
+
 }
 {% endhighlight %}
 
