@@ -75,75 +75,90 @@ public SerializableSystemType weaponType; // 에디터에서 Weapon 또는 Quake
 }
 {% endhighlight %}
 
-이제 새로운 무기 타입이 추가되더라도 `Action_Weapon.cs`를 수정할 필요 없이, `ItemData` 에셋에서 `Action_Weapon`을 연결하고 `weaponType`만 지정해주면 됩니다.
+이제 새로운 무기 타입이 추가되면 `Action_Weapon`을 연결하고 `weaponType`만 지정해주면 됩니다. 만약 새로운 무기가 기존과는 완전히 다른 행위를 한다면, `ItemAction`을 상속받는 새로운 클래스를 만들어 구현하면 됩니다.
 
-### 3. `Action_StatBoostGear.cs` - 능력치 강화 장비의 행동 정의
+### 3. 능력치 강화 장비의 행동 정의
 
-기존 `Gear.cs`의 역할을 대체하는 `Action_StatBoostGear` 클래스입니다. 이 클래스는 어떤 대상(`Player` 또는 `Weapon`)의 어떤 스탯에 어떤 타입의 `StatModifier`를 적용할지를 데이터(`statValues`, `modifierType`)로 정의합니다.
+기존 `Gear.cs`의 역할도 비슷한 원리로 대체할 수 있습니다. 'ItemAction'을 상속받는 'Action_CoolDownGear', 'Action_DefenseGear'등을 정의해서 각 장비의 고유한 행동을 구현할 수 있습니다. 여기서는 '쿨다운 감소 장비'의 행동을 정의하는 `Action_CooldownReductionGear`를 예시로 보여드리겠습니다.
 
 {% highlight c# %}
-// Assets/Undead Survivor/Script/Action_StatBoostGear.cs
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Action_StatBoostGear", menuName = "Item Actions/Stat Boost Gear")]
-public class Action_StatBoostGear : ItemAction
+/// <summary>
+/// 쿨다운 감소 장비(Cooldown Reduction Gear)의 행동을 정의하는 ItemAction입니다.
+/// </summary>
+[CreateAssetMenu(fileName = "Action_CooldownReductionGear", menuName = "Item Actions/Gears/Cooldown Reduction Gear Action")]
+public class Action_CooldownReductionGear : ItemAction
 {
-public enum Target { Player, Weapon }
-public Target targetType;
-public float[] statValues; // 레벨별 적용 값
-public StatModifierType modifierType; // Flat, Additive, Multiplicative
-
-    public override void OnEquip(Item item)
-    {
-        ApplyStat(item, 0);
-    }
+public override void OnEquip(Item item)
+{
+if (item.data is GearData gearData)
+{
+ApplyToAllWeapons(gearData, 0);
+}
+}
 
     public override void OnLevelUp(Item item)
     {
-        RemoveStat(item, item.level - 1); // 이전 효과 제거
-        ApplyStat(item, item.level);      // 새 효과 적용
-    }
-
-    private void ApplyStat(Item item, int level)
-    {
-        float value = (statValues.Length > level) ? statValues[level] : statValues[0];
-        StatModifier modifier = new StatModifier(value, modifierType, this); // Source를 this로 설정
-
-        switch (targetType)
+        if (item.data is GearData gearData)
         {
-            case Target.Player:
-                GameManager.instance.player.speed.AddModifier(modifier);
-                break;
-            case Target.Weapon:
-                // ... 무기 스탯 적용 로직
-                break;
-        }
-    }
-
-    private void RemoveStat(Item item, int level)
-    {
-        // Source를 기준으로 쉽게 모디파이어 제거
-        switch (targetType)
-        {
-            case Target.Player:
-                GameManager.instance.player.speed.RemoveAllModifiersFromSource(this);
-                break;
-            case Target.Weapon:
-                // ... 무기 스탯 제거 로직
-                break;
+            RemoveFromAllWeapons(gearData);
+            ApplyToAllWeapons(gearData, item.level);
         }
     }
 
     public override string GetDescription(Item item)
     {
-        // 레벨별 스탯 증가량을 동적으로 계산하여 설명 생성
-        // ... (생략: 복잡한 스탯 계산 로직)
+        if (item.data is GearData gearData)
+        {
+            int level = item.level;
+            float value = (gearData.statValues.Length > level) ? gearData.statValues[level] : gearData.statValues[0];
+
+            if (level > 0)
+            {
+                float prevValue = (gearData.statValues.Length > level - 1) ? gearData.statValues[level - 1] : gearData.statValues[0];
+                float diff = value - prevValue;
+                return string.Format(gearData.itemDesc, $"+{diff * 100:F0}%");
+            }
+            else
+            {
+                return string.Format(gearData.itemDesc, $"{value * 100:F0}%");
+            }
+        }
+        return item.data.itemDesc;
+    }
+
+    private void ApplyToAllWeapons(GearData gearData, int level)
+    {
+        float value = (gearData.statValues.Length > level) ? gearData.statValues[level] : gearData.statValues[0];
+        // 쿨다운 감소는 음수 값으로 적용해야 합니다.
+        StatModifier modifier = new StatModifier(-value, gearData.modifierType, gearData);
+
+        foreach (var weaponItem in GameManager.instance.player.items)
+        {
+            if (weaponItem.weapon != null)
+            {
+                weaponItem.weapon.cooldown.AddModifier(modifier);
+            }
+        }
+    }
+
+    private void RemoveFromAllWeapons(GearData gearData)
+    {
+        foreach (var weaponItem in GameManager.instance.player.items)
+        {
+            if (weaponItem.weapon != null)
+            {
+                weaponItem.weapon.cooldown.RemoveAllModifiersFromSource(gearData);
+            }
+        }
     }
 
 }
+
 {% endhighlight %}
 
-이로써 `Gear.cs`는 더 이상 필요 없게 되었고, 새로운 장비 효과는 `Action_StatBoostGear` 에셋을 만들고 값만 설정해주면 됩니다. `StatModifier`의 `Source`를 `this` (ScriptableObject 인스턴스)로 설정하여, 해당 장비가 비활성화되거나 레벨업할 때 이 장비가 적용했던 모든 모디파이어를 쉽게 제거할 수 있게 한 것이 핵심입니다.
+이로써 `Gear.cs`는 더 이상 필요 없게 되었고, 새로운 장비 효과는 해당 장비가 어떤 스탯을 강화하는지에 따라 `ItemAction`을 상속받는 적합한 클래스를 연결해주면 됩니다.
 
 ### 4. `Item.cs`의 변화: 행동 위임
 
@@ -172,7 +187,7 @@ textDesc.text = itemAction?.GetDescription(this);
 }
 {% endhighlight %}
 
-이제 `Item.cs`는 아이템의 '데이터'와 '행동'을 연결하는 단순한 브릿지 역할만 수행하게 됩니다. 이는 **단일 책임 원칙**을 준수하는 설계입니다.
+이제 `Item.cs`는 아이템의 '데이터'와 '행동'을 연결하는 단순한 브릿지 역할만 수행하게 됩니다.
 
 ## 리팩토링의 결과와 얻은 이점
 
@@ -180,7 +195,7 @@ textDesc.text = itemAction?.GetDescription(this);
 
 1.  **코드 중복 제거:** `WeaponBase`와 `ItemAction` 추상 클래스를 통해 공통 로직을 재사용하고, 각 구체 클래스는 자신만의 고유한 로직에 집중할 수 있게 되었습니다.
 2.  **유지보수성 향상:** 각 클래스가 자신의 명확한 책임만 가지게 되어 코드를 이해하고 수정하기가 훨씬 쉬워졌습니다.
-3.  **뛰어난 확장성:** 앞새로운 무기나 장비 효과를 추가할 때, 기존 코드를 수정할 필요 없이 `ItemAction`을 상속받는 새로운 ScriptableObject 에셋만 만들면 됩니다. 이는 개발 속도를 크게 향상시키고 버그 발생 가능성을 줄여줍니다.
+3.  **뛰어난 확장성:** 새로운 행위를 하는 무기나 장비 효과를 추가할 때, 기존 코드를 수정할 필요 없이 `ItemAction`을 상속받는 새로운 ScriptableObject 에셋만 만들면 됩니다. 이는 개발 속도를 크게 향상시키고 버그 발생 가능성을 줄여줍니다.
 
 ## 개발 관련 이야기
 
